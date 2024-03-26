@@ -1,0 +1,30 @@
+@font-face {
+    font-family: "VT323";
+    src: url("../assets/fonts/VT323-Regular.ttf");
+}
+
+@font-face {
+    font-family: "PressStart2P";
+    src: url("../assets/fonts/PressStart2P-Regular.ttf");
+}
+
+
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "PressStart2P";
+    outline: none;
+}
+
+body {
+    background-color: #E0E8E8;
+    color: #404040;
+    height: 200vh;
+}
+
+button {
+    cursor: pointer;
+}
