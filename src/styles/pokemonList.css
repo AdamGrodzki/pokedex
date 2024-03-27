@@ -1,0 +1,31 @@
+.poke-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    place-items: center;
+    gap: 10px 10px;
+}
+
+.poke-container {
+    display: grid;
+}
+
+
+.pokemon-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-weight: bold;
+    transition: color .3s ease-in;
+    text-decoration: none;
+    border: 2px solid yellow;
+    border-radius: 8px;
+    height: 160px;
+    width: 160px;
+    text-transform: capitalize;
+
+}
+
+.pokemon-link:hover {
+    color: whitesmoke;
+}

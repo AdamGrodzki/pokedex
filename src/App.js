@@ -1,25 +1,32 @@
-import React from "react";
-import Navbar from "./pages/Navbar";
-import Pokedex from "./pages/Pokedex";
-import "./app.css";
-import {
-  BrowserRouter as Router,
-  Routes,
-  // Switch,
-  Route,
-} from "react-router-dom";
+
+import { Routes, Route } from "react-router-dom";
+import { useState, useEffect } from "react";
+import PokemonList from './components/PokemonList';
+import PokemonDetails from "./components/PokemonDetails";
 
 
 export default function App() {
-  return (
 
-    <Router>
+  const [pokemons, setPokemons] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=20");
+      const data = await response.json();
+      console.log(data);
+      setPokemons(data.results)
+    }
+
+    fetchData();
+  }, [])
+
+  return (
+    <div>
       <Routes>
-        <Route path="/" component={<Pokedex />} />
-        <Route path="/" component={<Navbar />} />
-      </Routes >
-    </Router>
+        <Route path='/' element={<PokemonList pokemons={pokemons} />} />
+        <Route path='/pokemon/:pokemonName' element={<PokemonDetails />} />
+      </Routes>
+    </div >
   );
 }
-
 
