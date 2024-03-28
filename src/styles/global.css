@@ -20,14 +20,17 @@
 }
 
 body {
-    background-color: #E0E8E8;
-    color: #404040;
+    /* background-color: #E0E8E8; */
+    background-color: grey;
+    /* color: #404040; */
+    color: black;
     background-image: url("../assets/images/pokemonTheme.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    /* overflow-y: hidden; */
     height: 100vh;
-    overflow-y: hidden;
 }
+
 
 
 button {

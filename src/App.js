@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import { useState, useEffect } from "react";
 import PokemonList from './components/PokemonList';
 import PokemonDetails from "./components/PokemonDetails";
+import { CgPokemon } from "react-icons/cg";
 
 
 export default function App() {
@@ -11,7 +12,7 @@ export default function App() {
 
   useEffect(() => {
     async function fetchData() {
-      const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=20");
+      const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=1302");
       const data = await response.json();
       console.log(data);
       setPokemons(data.results)

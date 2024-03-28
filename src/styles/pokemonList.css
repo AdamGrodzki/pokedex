@@ -28,4 +28,18 @@
 
 .pokemon-link:hover {
     color: whitesmoke;
+    color: yellow;
+}
+
+a {
+    display: block;
+    width: fit-content;
+    color: yellow;
+    text-decoration: none;
+    margin-left: 50px;
+    border: 2px solid yellow;
+    padding: 10px;
+    border-radius: 8px;
+    margin-top: 30px;
+
 }

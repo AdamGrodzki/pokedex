@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import Loading from "./Loading";
+import PokemonCard from "./PokemonCard";
 
 const PokemonDetails = () => {
 
@@ -22,7 +24,9 @@ const PokemonDetails = () => {
     return (
         <div>
             <Link to="/">Back</Link>
-            <h3>Pokemon Details:</h3>
+            <h1>Pokemon Details</h1>
+
+            {!details ? <Loading /> : <PokemonCard details={details} />}
         </div>
     );
 }
