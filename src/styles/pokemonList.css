@@ -1,14 +1,10 @@
 .poke-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    place-items: center;
     gap: 10px 10px;
+    width: 1000px;
+    margin: auto;
 }
-
-.poke-container {
-    display: grid;
-}
-
 
 .pokemon-link {
     display: flex;
@@ -20,8 +16,8 @@
     text-decoration: none;
     border: 2px solid yellow;
     border-radius: 8px;
-    height: 160px;
-    width: 160px;
+    height: 180px;
+    width: 180px;
     text-transform: capitalize;
 
 }
@@ -36,10 +32,8 @@ a {
     width: fit-content;
     color: yellow;
     text-decoration: none;
-    margin-left: 50px;
     border: 2px solid yellow;
     padding: 10px;
     border-radius: 8px;
-    margin-top: 30px;
 
 }
