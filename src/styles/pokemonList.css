@@ -8,23 +8,24 @@
 
 .pokemon-link {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     color: black;
     font-weight: bold;
     transition: color .3s ease-in;
     text-decoration: none;
-    border: 2px solid yellow;
     border-radius: 8px;
+    filter: drop-shadow(0 0 10px #000);
     height: 180px;
     width: 180px;
     text-transform: capitalize;
-
+    background-image: url("../assets/images/poke_background_icon.png");
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .pokemon-link:hover {
-    color: whitesmoke;
-    color: yellow;
+    color: #fff;
 }
 
 a {
@@ -32,8 +33,17 @@ a {
     width: fit-content;
     color: yellow;
     text-decoration: none;
-    border: 2px solid yellow;
     padding: 10px;
     border-radius: 8px;
+    /* border: 2px solid yellow; */
+}
 
+.buttons-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+.buttons-wrap button {
+    width: 150px;
 }

@@ -1,7 +1,7 @@
-.button-text {
+.back-btn {
     background-color: #ffcd02;
     color: #003060;
-    margin: 0px 10px;
+    margin: 10px 20px;
     padding: 5px 10px;
     height: 40px;
     border: none;
@@ -10,20 +10,16 @@
     cursor: pointer;
     transition: transform 0.4s ease-in-out;
     font-size: 15px;
+    display: flex;
+    align-items: center;
 }
 
-.button-text:hover {
+.back-btn:hover {
     transform: scale(1.1);
 }
 
-.button-text:active {
+.back-btn:active {
     transform: scale(0.9);
     background-color: #003060;
     color: #ffcd02;
-}
-
-.button-text:disabled {
-    opacity: 0.5;
-    /* cursor: not-allowed; */
-    pointer-events: none;
 }

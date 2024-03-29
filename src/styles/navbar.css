@@ -1,0 +1,25 @@
+nav {
+    position: sticky;
+    top: 0;
+    background-color: #1d1d1d;
+    color: #ffcd02;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 1;
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    list-style-type: none;
+    margin: 0 10px;
+}
+
+li {
+    margin: 0 10px;
+}

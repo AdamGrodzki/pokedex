@@ -7,7 +7,6 @@ const Button = ({ onClick, disabled, children }) => {
             onClick={onClick}
             disabled={disabled}
         >{children}</button>
-
     );
 }
 

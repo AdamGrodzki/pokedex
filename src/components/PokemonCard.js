@@ -10,7 +10,7 @@ const PokemonCard = ({ details }) => {
                 <h2 className="capitalize-name">{name}</h2>
                 <div className="base-stats">
                     <span>ID: </span>
-                    {id}
+                    #{id.toString().padStart(3, '0')}
                 </div>
             </div>
 
