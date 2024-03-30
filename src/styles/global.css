@@ -36,7 +36,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     /* overflow-y: hidden; */
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 h1 {

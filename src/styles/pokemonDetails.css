@@ -23,3 +23,8 @@
     background-color: #003060;
     color: #ffcd02;
 }
+
+body {
+    /* height: 100vh;
+    overflow-y: hidden; */
+}

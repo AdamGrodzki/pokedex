@@ -1,15 +1,40 @@
 import { Link } from 'react-router-dom';
 import "../styles/pokemonList.css";
 import Button from './Button';
-import Navbar from './Navbar';
+import { useState, useEffect } from "react";
 
-const PokemonList = ({ pokemons, previous, next, setNext }) => {
-    console.log("pokemons", pokemons)
-    console.log("allData:", previous)
-    console.log("next", next)
+const PokemonList = () => {
+
+    const [pokemons, setPokemons] = useState([]);
+    const [previousUrl, setPreviousUrl] = useState(null);
+    const [nextUrl, setNextUrl] = useState("");
+    const [currentPageUrl, setCurrentPageUrl] = useState(
+        "https://pokeapi.co/api/v2/pokemon"
+    );
+
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch(currentPageUrl);
+            const data = await response.json();
+            setPreviousUrl(data.previous)
+            setNextUrl(data.next)
+            setPokemons(data.results)
+        }
+
+        fetchData();
+    }, [currentPageUrl]);
+
+    const handleNextPage = () => {
+        setCurrentPageUrl(nextUrl)
+    }
+
+    const handlePrevPage = () => {
+        setCurrentPageUrl(previousUrl)
+    }
+
     return (
         <div>
-            <Navbar />
+
             <h1 className='h1'>
                 Pokedex
             </h1>
@@ -29,8 +54,8 @@ const PokemonList = ({ pokemons, previous, next, setNext }) => {
             </div>
 
             <div className='buttons-wrap'>
-                <Button disabled={previous === null}>Previous</Button>
-                <Button disabled={next === null} onClick={() => next = { next }}>Next</Button>
+                <Button disabled={previousUrl === null} onClick={handlePrevPage}>Previous</Button>
+                <Button disabled={nextUrl === null} onClick={handleNextPage}>Next</Button>
             </div>
         </div >);
 
@@ -38,3 +63,4 @@ const PokemonList = ({ pokemons, previous, next, setNext }) => {
 
 
 export default PokemonList;
+

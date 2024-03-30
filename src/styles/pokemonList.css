@@ -11,6 +11,7 @@
     align-items: flex-start;
     justify-content: center;
     color: black;
+    text-align: center;
     font-weight: bold;
     transition: color .3s ease-in;
     text-decoration: none;

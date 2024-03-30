@@ -1,26 +1,25 @@
 import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import Loading from "./Loading";
+
 import PokemonCard from "./PokemonCard";
 import "../styles/pokemonDetails.css"
 
 const PokemonDetails = () => {
-
     const { pokemonName } = useParams();
-
     const [details, setDetails] = useState(null);
-
 
     useEffect(() => {
         async function fetchDetails() {
             const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
             const data = await response.json();
-            console.log(data)
             setDetails(data);
         }
 
+
         fetchDetails();
     }, [pokemonName]);
+
 
     return (
         <div>
@@ -33,3 +32,4 @@ const PokemonDetails = () => {
 }
 
 export default PokemonDetails;
+
