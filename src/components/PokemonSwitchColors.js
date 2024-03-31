@@ -3,7 +3,7 @@ const colorSwitcher = (type) => {
 
     switch (type) {
         case "grass":
-            color = "#78c850";
+            color = "#9bcc50";
             break;
 
         case "bug":
@@ -82,20 +82,3 @@ const colorSwitcher = (type) => {
 };
 
 export default colorSwitcher;
-
-// const colorSwitcher = (type) => {
-//     let image;
-
-//     switch (type) {
-//         case "grass":
-//             image = "url('https://cdn.pixabay.com/photo/2023/02/06/18/57/fire-7772574_1280.png')";
-//             break;
-
-//         default:
-//             image = "url('grass-image-url')";
-//     }
-
-//     return image;
-// };
-
-// export default colorSwitcher;

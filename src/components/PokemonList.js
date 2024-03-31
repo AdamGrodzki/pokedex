@@ -3,14 +3,20 @@ import "../styles/pokemonList.css";
 import Button from './Button';
 import { useState, useEffect } from "react";
 
+export let nextUrlParam = "";
+
 const PokemonList = () => {
 
     const [pokemons, setPokemons] = useState([]);
     const [previousUrl, setPreviousUrl] = useState(null);
     const [nextUrl, setNextUrl] = useState("");
-    const [currentPageUrl, setCurrentPageUrl] = useState(
-        "https://pokeapi.co/api/v2/pokemon"
-    );
+    let [currentPageUrl, setCurrentPageUrl] = useState(null);
+
+    if (nextUrlParam === "") {
+        currentPageUrl = "https://pokeapi.co/api/v2/pokemon"
+    } else {
+        currentPageUrl = nextUrlParam
+    }
 
     useEffect(() => {
         async function fetchData() {
@@ -25,11 +31,13 @@ const PokemonList = () => {
     }, [currentPageUrl]);
 
     const handleNextPage = () => {
-        setCurrentPageUrl(nextUrl)
+        setCurrentPageUrl(nextUrl);
+        nextUrlParam = nextUrl;
     }
 
     const handlePrevPage = () => {
-        setCurrentPageUrl(previousUrl)
+        console.log('prev: ', previousUrl)
+        setCurrentPageUrl(previousUrl);
     }
 
     return (
