@@ -32,11 +32,10 @@
 a {
     display: block;
     width: fit-content;
-    color: yellow;
     text-decoration: none;
     padding: 10px;
     border-radius: 8px;
-    /* border: 2px solid yellow; */
+    font-size: 14px;
 }
 
 .buttons-wrap {

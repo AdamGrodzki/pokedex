@@ -33,12 +33,15 @@ const PokemonList = () => {
     const handleNextPage = () => {
         setCurrentPageUrl(nextUrl);
         nextUrlParam = nextUrl;
+        console.log("nextUrlParam", nextUrlParam)
     }
 
     const handlePrevPage = () => {
-        console.log('prev: ', previousUrl)
         setCurrentPageUrl(previousUrl);
+        nextUrlParam = previousUrl;
+        console.log("prevUrlParam", previousUrl)
     }
+
 
     return (
         <div>

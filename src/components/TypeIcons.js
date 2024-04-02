@@ -8,7 +8,7 @@ const typeIcons = {
     dark: "https://archives.bulbagarden.net/media/upload/0/0f/Battrio_Dark_type.png",
     electric: "https://archives.bulbagarden.net/media/upload/0/02/Battrio_Electric_type.png",
     fighting: "https://archives.bulbagarden.net/media/upload/1/1b/Battrio_Fighting_type.png",
-    ghost: "https://archives.bulbagarden.net/media/upload/2/28/Battrio_Ghost_type.png",
+    ghost: "https://archives.bulbagarden.net/media/upload/0/01/Ghost_icon_SwSh.png",
     normal: "https://archives.bulbagarden.net/media/upload/7/75/Battrio_Normal_type.png",
     poison: "https://archives.bulbagarden.net/media/upload/2/20/Battrio_Poison_type.png",
     psychic: "https://archives.bulbagarden.net/media/upload/6/61/Battrio_Psychic_type.png",

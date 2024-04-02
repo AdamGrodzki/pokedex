@@ -10,10 +10,10 @@
 
 
 /* CSS COLORS */
-h1 {
+/* h1 {
     color: #ffcd02;
     color: #003060;
-}
+} */
 
 *,
 *:before,
@@ -26,22 +26,19 @@ h1 {
 }
 
 body {
-    /* background-color: #E0E8E8; */
-    /* background-color: grey; */
-    /* color: #404040; */
-    color: black;
-    /* background-image: url("../assets/images/pokemonTheme.jpg"); */
+    min-width: 100%;
+    min-height: 100vh;
+    /* background-image: url("../assets/images/pokemonTheme.gif"); */
     background-image: url("../assets/images/pokemon-gif-wallpaper.gif");
-    background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/cad4b52e-f6b1-432f-9035-a5f4853bcf15/d79j5ub-d5d98d2d-cb50-4806-a67b-103b4d08280b.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2NhZDRiNTJlLWY2YjEtNDMyZi05MDM1LWE1ZjQ4NTNiY2YxNVwvZDc5ajV1Yi1kNWQ5OGQyZC1jYjUwLTQ4MDYtYTY3Yi0xMDNiNGQwODI4MGIuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.H4hEdxNfm5FYdML-kCMLS0NiUuPlpghHnZB5Aa0CZRY");
     background-repeat: no-repeat;
     background-size: cover;
-    /* overflow-y: hidden; */
-    /* height: 100vh; */
+    color: black;
 }
+
 
 h1 {
     text-align: center;
-    margin: 50px;
-    color: yellow;
-    text-shadow: 0px 4px 20px rgba(0, 0, 0, 1);
+    margin: 40px;
+    color: #ffcd02;
+    filter: drop-shadow(5px 5px 0px rgba(0, 0, 0, 10));
 }

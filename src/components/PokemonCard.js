@@ -1,11 +1,35 @@
-import React from 'react';
+
+import React, { useState, useEffect } from 'react';
 import "../styles/pokemonCard.css"
 import colorSwitcher from "./PokemonSwitchColors"
+import defaultPokemonImage from "../../src/assets/images/pokeball.gif"
 import typeIcons from './TypeIcons';
+import { GoStarFill } from "react-icons/go";
 
 const PokemonCard = ({ details }) => {
     const { name, id, sprites, stats, types } = details;
+    const [isFavorite, setIsFavorite] = useState(false);
 
+    useEffect(() => {
+        // po odswiezeniu strony pokemon zostaje z gwiazdka
+        const favoritePokemon = JSON.parse(localStorage.getItem('favoritePokemon'));
+        if (favoritePokemon && favoritePokemon.includes(id)) {
+            setIsFavorite(true);
+        }
+    }, [id]);
+
+    const handleFavoriteToggle = () => {
+        setIsFavorite(!isFavorite);
+
+        //zapisane zmiany
+        let favoritePokemon = JSON.parse(localStorage.getItem('favoritePokemon')) || [];
+        if (isFavorite) {
+            favoritePokemon = favoritePokemon.filter(pokemonId => pokemonId !== id);
+        } else {
+            favoritePokemon.push(id);
+        }
+        localStorage.setItem('favoritePokemon', JSON.stringify(favoritePokemon));
+    };
 
     const getTypeIcon = (type) => {
         const icon = typeIcons[type];
@@ -27,13 +51,16 @@ const PokemonCard = ({ details }) => {
 
             <div>
                 <div className="stats-container" style={{ background: colorSwitcher(types[0].type.name) }}>
-                    <img src={sprites.front_default} alt={name} className="pokemon-img" />
+                    <button className='fav-button' onClick={handleFavoriteToggle}>
+                        {isFavorite ? <GoStarFill size={30} color="gold" /> : <GoStarFill size={30} />}
+                    </button>
+                    <img src={sprites.front_default || defaultPokemonImage} alt={name} className="pokemon-img" />
                     <div className="stats-info">
-                        <p>ATTACK: {stats[1].base_stat} ⚔️ </p>
-                        <p>SPEED: {stats[5].base_stat} ⚡ </p>
-                        <p>DEF: {stats[2].base_stat} 🛡️</p>
+                        <p className='attack info'>ATTACK: {stats[1].base_stat}</p>
+                        <p className='def info'>DEFENSE: {stats[2].base_stat}</p>
+                        <p className='speed info'>SPEED: {stats[5].base_stat}</p>
                         <p className='types-icon'>
-                            TYPES:{' '}
+                            TYPES:
                             {types.map((type) => (
                                 <span key={type.type.name}>{getTypeIcon(type.type.name)}</span>
                             ))}
@@ -46,3 +73,4 @@ const PokemonCard = ({ details }) => {
 };
 
 export default PokemonCard;
+

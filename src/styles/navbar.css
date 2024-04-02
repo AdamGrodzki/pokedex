@@ -2,7 +2,6 @@ nav {
     position: sticky;
     top: 0;
     background-color: #1d1d1d;
-    color: #ffcd02;
     height: 50px;
     display: flex;
     flex-direction: column;
@@ -10,6 +9,11 @@ nav {
     justify-content: center;
     align-items: flex-end;
     z-index: 1;
+}
+
+a {
+    color: #ffcd02;
+
 }
 
 ul {
