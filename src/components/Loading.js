@@ -1,7 +1,7 @@
 // import { SiPokemon } from "react-icons/si";
 import "../styles/loading.css"
 // import Starmie from "../../src/assets/images/starmie.png"
-import Starmie from "../../src/assets/images/Daco_5326559.png"
+import Starmie from "../../src/assets/images/starmiePixel.png"
 
 const Loading = () => {
     return (

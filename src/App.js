@@ -10,7 +10,7 @@ export default function App() {
       <Navbar />
       <Routes>
         <Route exact path='/' element={<PokemonList />} />
-        <Route path='/pokemon/:pokemonName' element={<PokemonDetails />} />
+        <Route path='/pokemon/:name' element={<PokemonDetails />} />
         <Route path='/favourites' element={<Favourites />} />
       </Routes>
     </div >

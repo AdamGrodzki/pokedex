@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import "../styles/pokemonList.css";
 import Button from './Button';
 import { useState, useEffect } from "react";
+import { MdOutlineCatchingPokemon } from "react-icons/md";
 
 export let nextUrlParam = "";
 
@@ -47,7 +48,7 @@ const PokemonList = () => {
         <div>
 
             <h1 className='h1'>
-                Pokedex
+                Poke<div className='spin'><MdOutlineCatchingPokemon size={45} /></div><span>dex</span>
             </h1>
 
             <div className='poke-container'>

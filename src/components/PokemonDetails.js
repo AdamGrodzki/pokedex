@@ -6,19 +6,19 @@ import "../styles/pokemonDetails.css"
 import PokemonList, { nextUrlParam } from "./PokemonList";
 
 const PokemonDetails = () => {
-    const { pokemonName } = useParams();
+    const { name } = useParams();
     const [details, setDetails] = useState(null);
 
     useEffect(() => {
         async function fetchDetails() {
-            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
             const data = await response.json();
             setDetails(data);
             console.log('data', data)
         }
 
         fetchDetails();
-    }, [pokemonName]);
+    }, [name]);
 
     const backToPreviousList = () => {
         <PokemonList nextUrlParam={nextUrlParam} />

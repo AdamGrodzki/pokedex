@@ -1,35 +1,22 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import "../styles/pokemonCard.css"
 import colorSwitcher from "./PokemonSwitchColors"
 import defaultPokemonImage from "../../src/assets/images/pokeball.gif"
 import typeIcons from './TypeIcons';
 import { GoStarFill } from "react-icons/go";
+import Favourites from ".//Favourites"
+
+
 
 const PokemonCard = ({ details }) => {
+
     const { name, id, sprites, stats, types } = details;
-    const [isFavorite, setIsFavorite] = useState(false);
+    const [isFavourite, setIsFavourite] = useState(false);
 
-    useEffect(() => {
-        // po odswiezeniu strony pokemon zostaje z gwiazdka
-        const favoritePokemon = JSON.parse(localStorage.getItem('favoritePokemon'));
-        if (favoritePokemon && favoritePokemon.includes(id)) {
-            setIsFavorite(true);
-        }
-    }, [id]);
-
-    const handleFavoriteToggle = () => {
-        setIsFavorite(!isFavorite);
-
-        //zapisane zmiany
-        let favoritePokemon = JSON.parse(localStorage.getItem('favoritePokemon')) || [];
-        if (isFavorite) {
-            favoritePokemon = favoritePokemon.filter(pokemonId => pokemonId !== id);
-        } else {
-            favoritePokemon.push(id);
-        }
-        localStorage.setItem('favoritePokemon', JSON.stringify(favoritePokemon));
-    };
+    const handleFavouriteToggle = () => {
+        setIsFavourite(!isFavourite)
+    }
 
     const getTypeIcon = (type) => {
         const icon = typeIcons[type];
@@ -51,14 +38,14 @@ const PokemonCard = ({ details }) => {
 
             <div>
                 <div className="stats-container" style={{ background: colorSwitcher(types[0].type.name) }}>
-                    <button className='fav-button' onClick={handleFavoriteToggle}>
-                        {isFavorite ? <GoStarFill size={30} color="gold" /> : <GoStarFill size={30} />}
+                    <button className='fav-button' onClick={handleFavouriteToggle}>
+                        {isFavourite ? <GoStarFill size={30} color="gold" /> : <GoStarFill size={30} />}
                     </button>
                     <img src={sprites.front_default || defaultPokemonImage} alt={name} className="pokemon-img" />
                     <div className="stats-info">
-                        <p className='attack info'>ATTACK: {stats[1].base_stat}</p>
-                        <p className='def info'>DEFENSE: {stats[2].base_stat}</p>
-                        <p className='speed info'>SPEED: {stats[5].base_stat}</p>
+                        <p className='attack info'>ATTACK:{stats[1].base_stat}</p>
+                        <p className='def info'>DEFENSE:{stats[2].base_stat}</p>
+                        <p className='speed info'>SPEED:{stats[5].base_stat}</p>
                         <p className='types-icon'>
                             TYPES:
                             {types.map((type) => (
@@ -69,8 +56,30 @@ const PokemonCard = ({ details }) => {
                 </div>
             </div>
         </div>
+
     );
 };
 
 export default PokemonCard;
 
+
+// useEffect(() => {
+//     // po odswiezeniu strony pokemon zostaje z gwiazdka
+//     const favouritePokemon = JSON.parse(localStorage.getItem('favouritePokemon'));
+//     if (favouritePokemon && favouritePokemon.includes(id)) {
+//         setIsFavourite(true);
+//     }
+// }, [id]);
+
+// const handleFavouriteToggle = () => {
+//     setIsFavourite(!isFavourite);
+
+//     //zapisane zmiany
+//     let favouritePokemon = JSON.parse(localStorage.getItem('favouritePokemon')) || [];
+//     if (isFavourite) {
+//         favouritePokemon = favouritePokemon.filter(pokemonId => pokemonId !== id);
+//     } else {
+//         favouritePokemon.push(id);
+//     }
+//     localStorage.setItem('favouritePokemon', JSON.stringify(favouritePokemon));
+// };

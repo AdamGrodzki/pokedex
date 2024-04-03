@@ -1,0 +1,65 @@
+.back-button {
+    background-color: #ffcd02;
+    color: #003060;
+    margin: 10px 20px;
+    padding: 5px 10px;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.4s ease-in-out;
+    font-size: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.back-button:hover {
+    transform: scale(1.1);
+}
+
+.back-button:active {
+    transform: scale(0.9);
+    background-color: #003060;
+    color: #ffcd02;
+}
+
+.favourite-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.favourite-container img {
+    height: 100px;
+    margin: 0 -20px;
+}
+
+
+.pokemon-favGallery {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* .heart-icon {
+    color: red;
+    margin-left: -20px;
+    animation: pulse 1s infinite;
+    transform: scale(1);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+    }
+
+    70% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0.95);
+    }
+} */
