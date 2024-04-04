@@ -27,7 +27,7 @@ const PokemonDetails = () => {
     return (
         <div>
             <Link className="back-btn" to='/' onClick={backToPreviousList}>Back</Link>
-            <h1>Pokemon Details</h1>
+            <h1 className="h1">Pokemon Details</h1>
 
             {!details ? <Loading /> : <PokemonCard details={details} />}
         </div>

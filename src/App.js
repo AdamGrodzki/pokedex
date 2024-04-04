@@ -11,7 +11,7 @@ export default function App() {
       <Routes>
         <Route exact path='/' element={<PokemonList />} />
         <Route path='/pokemon/:name' element={<PokemonDetails />} />
-        <Route path='/favourites' element={<Favourites />} />
+        <Route path='/favourite' element={<Favourites />} />
       </Routes>
     </div >
   );

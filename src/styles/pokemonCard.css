@@ -1,7 +1,6 @@
 .pokemon-card {
     display: flex;
     margin-bottom: 5px;
-
 }
 
 .capitalize-name {
@@ -42,7 +41,7 @@
     font-weight: bold;
     line-height: 35px;
     margin-top: 10px;
-    text-align: center;
+    text-align: start;
     border-top: 2px solid black;
     width: 100%
 }
@@ -69,21 +68,31 @@
 }
 
 .info {
-    text-shadow: 0px 3px 5px black;
+    text-shadow: 0px 0px 2px black;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
 .attack {
-    color: #F4E486;
+    color: #757cbb;
 }
 
 .speed {
-    color: #D880FF
+    color: #D880FF;
 }
 
 .def {
     color: #FEB17A;
 }
 
+.types-icon img {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    bottom: 70px;
+    right: 180px;
+}
 
 .fav-button {
     position: relative;
@@ -92,6 +101,7 @@
     top: -35px;
     cursor: pointer;
 }
+
 
 @keyframes pulse {
     0% {

@@ -1,9 +1,16 @@
 .poke-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 10px 10px;
+    gap: 15px 15px;
     width: 1000px;
     margin: auto;
+}
+
+.h1 {
+    text-align: center;
+    margin: 40px;
+    color: #ffcd02;
+    filter: drop-shadow(5px 5px 0px rgba(0, 0, 0, 10));
 }
 
 .pokemon-link {
@@ -23,10 +30,16 @@
     background-image: url("../assets/images/poke_background_icon.png");
     background-size: cover;
     background-repeat: no-repeat;
+    transform: scale(1);
+    transition: transform 1s ease-in;
 }
 
 .pokemon-link:hover {
     color: #fff;
+}
+
+.pokemon-link:focus {
+    transform: scale(1.1);
 }
 
 a {
@@ -47,11 +60,13 @@ a {
 .buttons-wrap button {
     width: 150px;
 }
+
 .spin {
     color: #f0f0f0;
     display: inline-block;
     animation: spin 2.8s linear infinite;
 }
+
 @keyframes spin {
     from {
         transform: rotate(0deg);
@@ -61,4 +76,3 @@ a {
         transform: rotate(360deg);
     }
 }
-

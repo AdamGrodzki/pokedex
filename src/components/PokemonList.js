@@ -11,7 +11,8 @@ const PokemonList = () => {
     const [pokemons, setPokemons] = useState([]);
     const [previousUrl, setPreviousUrl] = useState(null);
     const [nextUrl, setNextUrl] = useState("");
-    let [currentPageUrl, setCurrentPageUrl] = useState(null);
+    let [currentPageUrl, setCurrentPageUrl] = useState();
+
 
     if (nextUrlParam === "") {
         currentPageUrl = "https://pokeapi.co/api/v2/pokemon"
@@ -43,10 +44,9 @@ const PokemonList = () => {
         console.log("prevUrlParam", previousUrl)
     }
 
-
     return (
-        <div>
 
+        <div>
             <h1 className='h1'>
                 Poke<div className='spin'><MdOutlineCatchingPokemon size={45} /></div><span>dex</span>
             </h1>
@@ -54,7 +54,7 @@ const PokemonList = () => {
             <div className='poke-container'>
                 {
                     pokemons && (
-                        pokemons.map(pokemon => (
+                        pokemons?.map(pokemon => (
                             <div key={pokemon.name} className='pokemon'>
                                 <Link to={`/pokemon/${pokemon.name}`}
                                     className='pokemon-link'
@@ -64,7 +64,6 @@ const PokemonList = () => {
                     )
                 }
             </div>
-
             <div className='buttons-wrap'>
                 <Button disabled={previousUrl === null} onClick={handlePrevPage}>Previous</Button>
                 <Button disabled={nextUrl === null} onClick={handleNextPage}>Next</Button>

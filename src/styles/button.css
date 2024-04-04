@@ -22,6 +22,11 @@
     color: #ffcd02;
 }
 
+.button-text:focus {
+    background-color: #003060;
+    color: #ffcd02;
+}
+
 .button-text:disabled {
     opacity: 0.5;
     /* cursor: not-allowed; */
