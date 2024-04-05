@@ -1,11 +1,10 @@
 
-import React, { useState } from 'react';
-import "../styles/pokemonCard.css"
-// import colorSwitcher from "./PokemonSwitchColors"
-import defaultPokemonImage from "../../src/assets/images/pokeball.gif"
-import typeIcons from './TypeIcons';
-
+import React, { useState, useEffect } from 'react';
 import { colorSwitcher } from './PokemonSwitchColors';
+import typeIcons from './TypeIcons';
+import FavouritePokemon from './Favourites';
+import "../styles/pokemonCard.css"
+import defaultPokemonImage from "../../src/assets/images/pokeball.gif"
 
 import { GoStarFill } from "react-icons/go";
 import { RiSwordFill } from "react-icons/ri";
@@ -14,15 +13,41 @@ import { GiSteeltoeBoots } from "react-icons/gi";
 import { GiSpinningSword } from "react-icons/gi";
 import { GiBoltShield } from "react-icons/gi";
 
-const PokemonCard = ({ details }) => {
 
+export let favArray = [];
+
+const PokemonCard = ({ details }) => {
     const { name, id, sprites, stats, types } = details;
     const [isFavourite, setIsFavourite] = useState(false);
 
-
     const handleFavouriteToggle = () => {
-        setIsFavourite(!isFavourite)
-    }
+        let favouritePokemon = JSON.parse(localStorage.getItem('favouritePokemon')) || [];
+
+        if (isFavourite) {
+            favouritePokemon = favouritePokemon.filter(pokemonId => pokemonId !== details.id);
+            setIsFavourite(false);
+
+            favArray = favArray.filter(id => id !== details.id);
+        } else {
+            favouritePokemon.push(details.id);
+            setIsFavourite(true);
+
+            if (!favArray.includes(details.id)) {
+                favArray.push(details.id);
+            }
+        }
+        localStorage.setItem('favouritePokemon', JSON.stringify(favouritePokemon));
+
+        <FavouritePokemon />
+    };
+
+    useEffect(() => {
+        // po odswiezeniu strony pokemon zostaje z gwiazdka
+        const favouritePokemon = JSON.parse(localStorage.getItem('favouritePokemon'));
+        if (favouritePokemon && favouritePokemon.includes(id)) {
+            setIsFavourite(true);
+        }
+    }, [id]);
 
     const getTypeIcon = (type) => {
         const icon = typeIcons[type];
@@ -31,6 +56,7 @@ const PokemonCard = ({ details }) => {
         }
         return null;
     };
+
 
     return (
         <div className="main">
@@ -43,7 +69,6 @@ const PokemonCard = ({ details }) => {
             </div>
 
             <div>
-                {/* <div className="stats-container" style={{ background: colorSwitcher(types[0].type.name) }}> */}
                 <div className="stats-container" style={{ background: colorSwitcher(types[0].type.name) }}>
                     <button className='fav-button' onClick={handleFavouriteToggle}>
                         {isFavourite ? <GoStarFill size={30} color="gold" /> : <GoStarFill size={30} />}
@@ -56,11 +81,11 @@ const PokemonCard = ({ details }) => {
 
                     <img src={sprites.front_default || sprites.other.home.front_default || defaultPokemonImage} alt={name} className="pokemon-img" />
                     <div className="stats-info">
-                        <p className='attack info'><RiSwordFill color='#757cbb' size={25} /> ATTACK:{stats[1].base_stat}</p>
-                        <p className='def info'><FaShield color='#FEB17A' size={25} /> DEFENSE:{stats[2].base_stat}</p>
-                        <p className='speed info'><GiSteeltoeBoots color='#D880FF' size={25} /> SPEED:{stats[5].base_stat}</p>
-                        <p className='attack info'><GiSpinningSword color='#757cbb' size={25} /> SPECIAL ATTACK:{stats[3].base_stat}</p>
-                        <p className='def info'><GiBoltShield color='#FEB17A' size={25} /> SPECIAL DEFENSE:{stats[4].base_stat}</p>
+                        <p className='info'><RiSwordFill color='#E50000' size={25} /> ATTACK:{stats[1].base_stat}</p>
+                        <p className='info'><FaShield color='#FFFF00' size={25} /> DEFENSE:{stats[2].base_stat}</p>
+                        <p className='info'><GiSteeltoeBoots color='#ffc0cb' size={25} /> SPEED:{stats[5].base_stat}</p>
+                        <p className='info'><GiSpinningSword color='#0000ff' size={25} /> SPECIAL ATTACK:{stats[3].base_stat}</p>
+                        <p className='info'><GiBoltShield color='#007300' size={25} /> SPECIAL DEFENSE:{stats[4].base_stat}</p>
 
                     </div>
                 </div>
@@ -73,23 +98,19 @@ const PokemonCard = ({ details }) => {
 export default PokemonCard;
 
 
-// useEffect(() => {
-//     // po odswiezeniu strony pokemon zostaje z gwiazdka
-//     const favouritePokemon = JSON.parse(localStorage.getItem('favouritePokemon'));
-//     if (favouritePokemon && favouritePokemon.includes(id)) {
-//         setIsFavourite(true);
-//     }
-// }, [id]);
-
 // const handleFavouriteToggle = () => {
 //     setIsFavourite(!isFavourite);
-
-//     //zapisane zmiany
-//     let favouritePokemon = JSON.parse(localStorage.getItem('favouritePokemon')) || [];
-//     if (isFavourite) {
-//         favouritePokemon = favouritePokemon.filter(pokemonId => pokemonId !== id);
-//     } else {
-//         favouritePokemon.push(id);
+//     if (!favArray.includes(details.id)) {
+//         favArray.push(details.id);
 //     }
-//     localStorage.setItem('favouritePokemon', JSON.stringify(favouritePokemon));
+//     <FavouritePokemon />
 // };
+
+// let favouritePokemon = JSON.parse(localStorage.getItem('favouritePokemon')) || [];
+// if (isFavourite) {
+//     favouritePokemon = favouritePokemon.filter(pokemonId => pokemonId !== id);
+// } else {
+//     favouritePokemon.push(id);
+//     setIsFavourite(true);
+// }
+// localStorage.setItem('favouritePokemon', JSON.stringify(favouritePokemon));

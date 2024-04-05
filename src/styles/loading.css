@@ -1,3 +1,7 @@
+body {
+    overflow: hidden;
+}
+
 .loading-page {
     display: flex;
     align-items: center;

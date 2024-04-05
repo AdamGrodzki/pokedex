@@ -1,4 +1,3 @@
-
 const typeIcons = {
     grass: "https://archives.bulbagarden.net/media/upload/0/08/Battrio_Grass_type.png",
     fire: "https://archives.bulbagarden.net/media/upload/8/8a/Battrio_Fire_type.png",
@@ -10,7 +9,7 @@ const typeIcons = {
     fighting: "https://archives.bulbagarden.net/media/upload/1/1b/Battrio_Fighting_type.png",
     ghost: "https://archives.bulbagarden.net/media/upload/0/01/Ghost_icon_SwSh.png",
     normal: "https://archives.bulbagarden.net/media/upload/7/75/Battrio_Normal_type.png",
-    poison: "https://archives.bulbagarden.net/media/upload/2/20/Battrio_Poison_type.png",
+    poison: "https://archives.bulbagarden.net/media/upload/8/8d/Poison_icon_SwSh.png",
     psychic: "https://archives.bulbagarden.net/media/upload/6/61/Battrio_Psychic_type.png",
     rock: "https://archives.bulbagarden.net/media/upload/7/77/Battrio_Rock_type.png",
     steel: "https://archives.bulbagarden.net/media/upload/5/59/Battrio_Steel_type.png",

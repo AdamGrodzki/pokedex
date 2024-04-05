@@ -4,14 +4,18 @@ import Button from './Button';
 import { useState, useEffect } from "react";
 import { MdOutlineCatchingPokemon } from "react-icons/md";
 
+import { useSearchParams } from 'react-router-dom';
+
 export let nextUrlParam = "";
 
 const PokemonList = () => {
 
     const [pokemons, setPokemons] = useState([]);
-    const [previousUrl, setPreviousUrl] = useState(null);
+    const [previousUrl, setPreviousUrl] = useState("");
     const [nextUrl, setNextUrl] = useState("");
     let [currentPageUrl, setCurrentPageUrl] = useState();
+
+    const [searchParams, setSearchParams] = useSearchParams();
 
 
     if (nextUrlParam === "") {
@@ -33,15 +37,20 @@ const PokemonList = () => {
     }, [currentPageUrl]);
 
     const handleNextPage = () => {
+        setSearchParams({ page: (searchParams.get('page') || 1) * 1 + 1 });
         setCurrentPageUrl(nextUrl);
         nextUrlParam = nextUrl;
-        console.log("nextUrlParam", nextUrlParam)
+        // console.log("nextUrlParam", nextUrlParam)
     }
 
     const handlePrevPage = () => {
+        const currentPage = (searchParams.get('page') || 1) * 1;
+        if (currentPage > 1) {
+            setSearchParams({ page: currentPage - 1 });
+        }
         setCurrentPageUrl(previousUrl);
         nextUrlParam = previousUrl;
-        console.log("prevUrlParam", previousUrl)
+        // console.log("prevUrlParam", previousUrl)
     }
 
     return (

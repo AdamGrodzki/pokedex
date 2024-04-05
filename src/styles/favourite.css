@@ -40,25 +40,23 @@
     margin: 0 -20px;
 }
 
-
-
-/* .heart-icon {
-    color: red;
-    margin-left: -20px;
-    animation: pulse 1s infinite;
-    transform: scale(1);
+.fav-poke-container {
+    margin: auto;
+    padding: 20px 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    place-items: center;
+    grid-gap: 10px;
+    width: 550px;
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(0.95);
-    }
-
-    70% {
-        transform: scale(1);
-    }
-
-    100% {
-        transform: scale(0.95);
-    }
-} */
+.overload-pokemon {
+    color: #003060;
+    background-color: #fff;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 20px;
+    width: fit-content;
+    margin: auto;
+}
