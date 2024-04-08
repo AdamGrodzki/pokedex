@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { colorSwitcher } from './PokemonSwitchColors';
 import typeIcons from './TypeIcons';
@@ -13,12 +12,15 @@ import { GiSteeltoeBoots } from "react-icons/gi";
 import { GiSpinningSword } from "react-icons/gi";
 import { GiBoltShield } from "react-icons/gi";
 
+import Modal from '../components/Modal'
 
 export let favArray = [];
 
 const PokemonCard = ({ details }) => {
     const { name, id, sprites, stats, types } = details;
     const [isFavourite, setIsFavourite] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+
 
     const handleFavouriteToggle = () => {
         let favouritePokemon = JSON.parse(localStorage.getItem('favouritePokemon')) || [];
@@ -29,6 +31,10 @@ const PokemonCard = ({ details }) => {
 
             favArray = favArray.filter(id => id !== details.id);
         } else {
+            if (favArray.length >= 6) {
+                setShowModal(true);
+                return;
+            }
             favouritePokemon.push(details.id);
             setIsFavourite(true);
 
@@ -39,6 +45,11 @@ const PokemonCard = ({ details }) => {
         localStorage.setItem('favouritePokemon', JSON.stringify(favouritePokemon));
 
         <FavouritePokemon />
+    };
+
+
+    const closeModal = () => {
+        setShowModal(false);
     };
 
     useEffect(() => {
@@ -67,6 +78,13 @@ const PokemonCard = ({ details }) => {
                     #{id.toString().padStart(3, '0')}
                 </div>
             </div>
+
+            <Modal isOpen={showModal} onClose={closeModal}>
+                <div className="modal__content">
+                    <h2>Oops!</h2>
+                    <p>You can only have a maximum of 6 favorite Pokemon.</p>
+                </div>
+            </Modal>
 
             <div>
                 <div className="stats-container" style={{ background: colorSwitcher(types[0].type.name) }}>

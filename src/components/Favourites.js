@@ -13,7 +13,7 @@ const FavouritePokemon = () => {
     useEffect(() => {
         const fetchData = async () => {
             const data = await Promise.all(
-                favArray.slice(0, 6).map(async (item) => {
+                favArray.map(async (item) => {
                     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${item}/`);
                     return await response.json();
                 })
@@ -39,9 +39,6 @@ const FavouritePokemon = () => {
                     </div>
                 ))}
             </div>
-            {favArray.length > 6 && (
-                <p className='overload-pokemon'>You can't have more than 6 pokemon in the team.</p>
-            )}
         </div>
     )
 };

@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation, useNavigate } from "react-router-dom";
 import Loading from "./Loading";
 import PokemonCard from "./PokemonCard";
 import "../styles/pokemonDetails.css"
-import PokemonList, { nextUrlParam } from "./PokemonList";
 
 const PokemonDetails = () => {
     const { name } = useParams();
     const [details, setDetails] = useState(null);
+    const location = useLocation();
+    const navigate = useNavigate();
+    console.log("location", location)
+
 
     useEffect(() => {
         async function fetchDetails() {
@@ -20,13 +23,10 @@ const PokemonDetails = () => {
         fetchDetails();
     }, [name]);
 
-    const backToPreviousList = () => {
-        <PokemonList nextUrlParam={nextUrlParam} />
-    }
 
     return (
         <div>
-            <Link className="back-btn" to='/' onClick={backToPreviousList}>Back</Link>
+            <Link className="back-btn" onClick={() => navigate(-1)}>Back</Link>
             <h1 className="h1">Pokemon Details</h1>
 
             {!details ? <Loading /> : <PokemonCard details={details} />}

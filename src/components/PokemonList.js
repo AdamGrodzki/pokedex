@@ -3,54 +3,50 @@ import "../styles/pokemonList.css";
 import Button from './Button';
 import { useState, useEffect } from "react";
 import { MdOutlineCatchingPokemon } from "react-icons/md";
-
 import { useSearchParams } from 'react-router-dom';
 
-export let nextUrlParam = "";
 
 const PokemonList = () => {
 
     const [pokemons, setPokemons] = useState([]);
     const [previousUrl, setPreviousUrl] = useState("");
     const [nextUrl, setNextUrl] = useState("");
-    let [currentPageUrl, setCurrentPageUrl] = useState();
-
     const [searchParams, setSearchParams] = useSearchParams();
 
 
-    if (nextUrlParam === "") {
-        currentPageUrl = "https://pokeapi.co/api/v2/pokemon"
-    } else {
-        currentPageUrl = nextUrlParam
-    }
 
     useEffect(() => {
         async function fetchData() {
-            const response = await fetch(currentPageUrl);
+            let url = "https://pokeapi.co/api/v2/pokemon";
+            if (searchParams.get("page")) {
+                const currentPage = searchParams.get("page") * 1;
+                if (currentPage > 1) {
+                    url = `https://pokeapi.co/api/v2/pokemon?offset=${(currentPage - 1) * 20}`;
+                }
+            }
+            const response = await fetch(url);
             const data = await response.json();
             setPreviousUrl(data.previous)
             setNextUrl(data.next)
             setPokemons(data.results)
         }
 
+
         fetchData();
-    }, [currentPageUrl]);
+    }, [searchParams]);
 
     const handleNextPage = () => {
-        setSearchParams({ page: (searchParams.get('page') || 1) * 1 + 1 });
-        setCurrentPageUrl(nextUrl);
-        nextUrlParam = nextUrl;
-        // console.log("nextUrlParam", nextUrlParam)
-    }
+        const currentPage = (searchParams.get("page") || 1) * 1;
+        setSearchParams({ page: currentPage + 1 })
+        console.log("nextUrlParam", nextUrl)
+    };
 
     const handlePrevPage = () => {
-        const currentPage = (searchParams.get('page') || 1) * 1;
+        const currentPage = (searchParams.get("page") || 1) * 1;
         if (currentPage > 1) {
             setSearchParams({ page: currentPage - 1 });
+            console.log("prevUrlParam", previousUrl)
         }
-        setCurrentPageUrl(previousUrl);
-        nextUrlParam = previousUrl;
-        // console.log("prevUrlParam", previousUrl)
     }
 
     return (
