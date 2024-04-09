@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
-import "../styles/favourite.css"
-
+import { favArray } from "./PokemonCard";
+import { FavouriteStats, favouritePokemons } from './FavouriteStats';
 import "../styles/favourite.css"
 import PikachuLove from "../../src/assets/images/pikachuLove.gif"
 
-import { favArray } from "./PokemonCard";
+
+
 
 const FavouritePokemon = () => {
     const [pokemons, setPokemons] = useState([]);
@@ -26,7 +27,6 @@ const FavouritePokemon = () => {
 
     return (
         <div>
-            <Link className='back-button' to="/">Home</Link>
             <div className='favourite-container'>
                 <h1>Favourite <img src={PikachuLove} alt='Pikachu jumps in the hearts' /> Pokemon</h1>
             </div>
@@ -39,6 +39,7 @@ const FavouritePokemon = () => {
                     </div>
                 ))}
             </div>
+            <FavouriteStats favouritePokemons={pokemons} />
         </div>
     )
 };

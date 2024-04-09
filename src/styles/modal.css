@@ -19,7 +19,7 @@
     cursor: pointer;
 }
 
-.modal-content {
+.modal__content {
     background-color: #fefefe;
     color: #003060;
     margin: 15% auto;

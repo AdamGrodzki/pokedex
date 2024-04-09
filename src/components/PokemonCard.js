@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import Modal from '../components/Modal'
 import { colorSwitcher } from './PokemonSwitchColors';
-import typeIcons from './TypeIcons';
 import FavouritePokemon from './Favourites';
+import typeIcons from './TypeIcons';
 import "../styles/pokemonCard.css"
 import defaultPokemonImage from "../../src/assets/images/pokeball.gif"
 
+import { FaHeart } from "react-icons/fa";
 import { GoStarFill } from "react-icons/go";
 import { RiSwordFill } from "react-icons/ri";
 import { FaShield } from "react-icons/fa6";
@@ -12,7 +14,6 @@ import { GiSteeltoeBoots } from "react-icons/gi";
 import { GiSpinningSword } from "react-icons/gi";
 import { GiBoltShield } from "react-icons/gi";
 
-import Modal from '../components/Modal'
 
 export let favArray = [];
 
@@ -20,6 +21,7 @@ const PokemonCard = ({ details }) => {
     const { name, id, sprites, stats, types } = details;
     const [isFavourite, setIsFavourite] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [totalStats, setTotalStats] = useState(0);
 
 
     const handleFavouriteToggle = () => {
@@ -60,6 +62,12 @@ const PokemonCard = ({ details }) => {
         }
     }, [id]);
 
+    useEffect(() => {
+        const sum = stats.reduce((acc, stat) => acc + stat.base_stat, 0);
+        setTotalStats(sum);
+        console.log("stat:", sum)
+    }, [stats]);
+
     const getTypeIcon = (type) => {
         const icon = typeIcons[type];
         if (typeof icon === 'string') {
@@ -77,10 +85,16 @@ const PokemonCard = ({ details }) => {
                     <span>ID: </span>
                     #{id.toString().padStart(3, '0')}
                 </div>
+                {isFavourite && (
+                    <div className="total-stats">
+                        <span>Total Stats: </span>
+                        {totalStats}
+                    </div>
+                )}
             </div>
 
             <Modal isOpen={showModal} onClose={closeModal}>
-                <div className="modal__content">
+                <div className="modal-content">
                     <h2>Oops!</h2>
                     <p>You can only have a maximum of 6 favorite Pokemon.</p>
                 </div>
@@ -99,6 +113,7 @@ const PokemonCard = ({ details }) => {
 
                     <img src={sprites.front_default || sprites.other.home.front_default || defaultPokemonImage} alt={name} className="pokemon-img" />
                     <div className="stats-info">
+                        <p className='info'><FaHeart color='#69DC12' size={25} /> HP:{stats[0].base_stat}</p>
                         <p className='info'><RiSwordFill color='#E50000' size={25} /> ATTACK:{stats[1].base_stat}</p>
                         <p className='info'><FaShield color='#FFFF00' size={25} /> DEFENSE:{stats[2].base_stat}</p>
                         <p className='info'><GiSteeltoeBoots color='#ffc0cb' size={25} /> SPEED:{stats[5].base_stat}</p>
