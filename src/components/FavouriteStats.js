@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import "../styles/favouriteStats.css"
+import combatPowerIcon from "../assets/images/combat_power(2).png"
+
 
 export const FavouriteStats = ({ favouritePokemons }) => {
     const [totalStats, setTotalStats] = useState(0);
@@ -6,12 +9,10 @@ export const FavouriteStats = ({ favouritePokemons }) => {
     useEffect(() => {
         const calculateTotalStats = () => {
             let sum = 0;
-            console.log("favPoke", favouritePokemons)
             favouritePokemons.forEach((pokemon) => {
                 const stats = pokemon.stats;
                 const statSum = stats.reduce((acc, stat) => acc + stat.base_stat, 0);
                 sum += statSum;
-                console.log("poke", pokemon)
             });
             setTotalStats(sum);
         };
@@ -22,8 +23,8 @@ export const FavouriteStats = ({ favouritePokemons }) => {
     return (
         <div className="favourite-stats">
             <h2>Total Stats for Favorite Pokemon</h2>
-            <p>Sum of Stats: {totalStats}</p>
-        </div>
+            <p className="combat-power"><img src={combatPowerIcon} alt="combat-power" /> Sum of Stats: <span className='total-stats'>{totalStats}</span></p>
+        </div >
     );
 };
 

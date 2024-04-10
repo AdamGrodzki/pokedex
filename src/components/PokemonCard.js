@@ -21,7 +21,7 @@ const PokemonCard = ({ details }) => {
     const { name, id, sprites, stats, types } = details;
     const [isFavourite, setIsFavourite] = useState(false);
     const [showModal, setShowModal] = useState(false);
-    const [totalStats, setTotalStats] = useState(0);
+    // const [totalStats, setTotalStats] = useState(0);
 
 
     const handleFavouriteToggle = () => {
@@ -62,11 +62,11 @@ const PokemonCard = ({ details }) => {
         }
     }, [id]);
 
-    useEffect(() => {
-        const sum = stats.reduce((acc, stat) => acc + stat.base_stat, 0);
-        setTotalStats(sum);
-        console.log("stat:", sum)
-    }, [stats]);
+    // useEffect(() => {
+    //     const sum = stats.reduce((acc, stat) => acc + stat.base_stat, 0);
+    //     setTotalStats(sum);
+    //     console.log("stat:", sum)
+    // }, [stats]);
 
     const getTypeIcon = (type) => {
         const icon = typeIcons[type];
@@ -85,12 +85,12 @@ const PokemonCard = ({ details }) => {
                     <span>ID: </span>
                     #{id.toString().padStart(3, '0')}
                 </div>
-                {isFavourite && (
+                {/* {isFavourite && (
                     <div className="total-stats">
                         <span>Total Stats: </span>
                         {totalStats}
                     </div>
-                )}
+                )} */}
             </div>
 
             <Modal isOpen={showModal} onClose={closeModal}>

@@ -20,7 +20,8 @@
 }
 
 .modal__content {
-    background-color: #fefefe;
+    filter: drop-shadow(5px 5px 0px rgba(0, 0, 0, 10));
+    background-color: #ffcd02;
     color: #003060;
     margin: 15% auto;
     padding: 20px;
@@ -34,6 +35,7 @@
 }
 
 .modal-close {
+    background-color: #ffcd02;
     color: #aaa;
     float: right;
     font-size: 28px;

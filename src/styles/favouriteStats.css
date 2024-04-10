@@ -1,0 +1,49 @@
+.favourite-stats {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+
+    padding: 30px;
+    margin: 20px;
+    background-color: #ffcd02;
+    color: #003060;
+    border-radius: 10px;
+    width: fit-content;
+    line-height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    filter: drop-shadow(5px 5px 0px rgba(0, 0, 0, 10));
+}
+
+.combat-power {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.combat-power img {
+    width: 96px;
+    height: 96px;
+    margin-right: 20px;
+    animation: pulse 2s infinite;
+}
+
+.total-stats {
+    font-weight: bold;
+    color: inherit;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}

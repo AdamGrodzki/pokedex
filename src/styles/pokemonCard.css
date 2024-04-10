@@ -90,7 +90,7 @@
 }
 
 .types-icon img:hover {
-    filter: saturate(200%);
+    filter: saturate(400%);
     transform: scale(1.1);
 }
 
