@@ -39,14 +39,12 @@ const PokemonList = () => {
     const handleNextPage = () => {
         const currentPage = (searchParams.get("page") || 1) * 1;
         setSearchParams({ page: currentPage + 1 })
-        console.log("nextUrlParam", nextUrl)
     };
 
     const handlePrevPage = () => {
         const currentPage = (searchParams.get("page") || 1) * 1;
         if (currentPage > 1) {
             setSearchParams({ page: currentPage - 1 });
-            console.log("prevUrlParam", previousUrl)
         }
     }
 
@@ -62,7 +60,7 @@ const PokemonList = () => {
                     pokemons && (
                         pokemons?.map(pokemon => (
                             <div key={pokemon.name} className='pokemon'>
-                                {!favIcon ? <GoStarFill size={15} color="gold" /> : <GoStarFill size={15} />}
+                                {/* {!favIcon ? <GoStarFill className='star-icon' size={20} color="gold" /> : <GoStarFill size={20} color='blue' />} */}
                                 <Link to={`/pokemon/${pokemon.name}`}
                                     className='pokemon-link'
                                 >{pokemon.name}</Link>

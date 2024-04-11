@@ -63,7 +63,6 @@ const PokemonCard = ({ details }) => {
         return null;
     };
 
-
     return (
         <div className="main">
             <div className="pokemon-card">
@@ -110,21 +109,3 @@ const PokemonCard = ({ details }) => {
 };
 
 export default PokemonCard;
-
-
-// const handleFavouriteToggle = () => {
-//     setIsFavourite(!isFavourite);
-//     if (!favArray.includes(details.id)) {
-//         favArray.push(details.id);
-//     }
-//     <FavouritePokemon />
-// };
-
-// let favouritePokemon = JSON.parse(localStorage.getItem('favouritePokemon')) || [];
-// if (isFavourite) {
-//     favouritePokemon = favouritePokemon.filter(pokemonId => pokemonId !== id);
-// } else {
-//     favouritePokemon.push(id);
-//     setIsFavourite(true);
-// }
-// localStorage.setItem('favouritePokemon', JSON.stringify(favouritePokemon));

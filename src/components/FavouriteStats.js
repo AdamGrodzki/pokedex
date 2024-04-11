@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import "../styles/favouriteStats.css"
-import combatPowerIcon from "../assets/images/combat_power(2).png"
+import combatPowerIcon from "../assets/images/combat_power.png"
 
 
 export const FavouriteStats = ({ favouritePokemons }) => {
