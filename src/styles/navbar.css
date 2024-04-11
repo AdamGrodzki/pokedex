@@ -1,4 +1,4 @@
-nav {
+.navbar {
     position: sticky;
     top: 0;
     background-color: #1d1d1d;
@@ -11,24 +11,19 @@ nav {
     z-index: 1;
 }
 
-a {
+.nav-link {
     color: #ffcd02;
-
+    margin-left: 10px;
 }
 
-ul {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
-    list-style-type: none;
-    margin: 0 10px;
-}
-
-a:focus {
+.nav-link:focus {
     color: #ffcc02e5;
     color: #fff;
 }
 
-li {
-    margin: 0 10px;
+.nav-link-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    list-style-type: none;
 }

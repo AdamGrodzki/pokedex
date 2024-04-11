@@ -25,7 +25,7 @@ const PokemonDetails = () => {
     return (
         <div>
             <Link className="back-btn" onClick={() => navigate(-1)}>Back</Link>
-            <h1 className="h1">Pokemon Details</h1>
+            <h1 className="heading-details">Pokemon Details</h1>
 
             {!details ? <Loading /> : <PokemonCard details={details} />}
         </div>

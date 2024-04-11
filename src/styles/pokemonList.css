@@ -1,3 +1,10 @@
+.heading-list {
+    text-align: center;
+    margin: 40px;
+    color: #ffcd02;
+    filter: drop-shadow(5px 5px 0px rgba(0, 0, 0, 10));
+}
+
 .poke-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -6,21 +13,22 @@
     margin: auto;
 }
 
-.h1 {
-    text-align: center;
-    margin: 40px;
-    color: #ffcd02;
-    filter: drop-shadow(5px 5px 0px rgba(0, 0, 0, 10));
+.spin {
+    color: #f0f0f0;
+    display: inline-block;
+    animation: spin 2.8s linear infinite;
 }
+
 
 .pokemon-link {
     display: flex;
     align-items: flex-start;
     justify-content: center;
     color: black;
+    font-size: 0.83rem;
+    line-height: 15px;
     text-align: center;
     font-weight: bold;
-    transition: color .3s ease-in;
     text-decoration: none;
     border-radius: 8px;
     filter: drop-shadow(0 0 10px #000);
@@ -31,7 +39,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     transform: scale(1);
-    transition: transform 1s ease-in;
+    transition: all 0.3s ease-in;
 }
 
 .pokemon-link:hover {
@@ -61,11 +69,6 @@ a {
     width: 150px;
 }
 
-.spin {
-    color: #f0f0f0;
-    display: inline-block;
-    animation: spin 2.8s linear infinite;
-}
 
 @keyframes spin {
     from {
@@ -76,3 +79,4 @@ a {
         transform: rotate(360deg);
     }
 }
+

@@ -4,6 +4,7 @@ import Button from './Button';
 import { useState, useEffect } from "react";
 import { MdOutlineCatchingPokemon } from "react-icons/md";
 import { GoStarFill } from "react-icons/go";
+import { favIcon } from './PokemonCard';
 
 
 const PokemonList = () => {
@@ -52,7 +53,7 @@ const PokemonList = () => {
     return (
 
         <div>
-            <h1 className='h1'>
+            <h1 className='heading-list'>
                 Poke<div className='spin'><MdOutlineCatchingPokemon size={45} /></div><span>dex</span>
             </h1>
 
@@ -61,7 +62,7 @@ const PokemonList = () => {
                     pokemons && (
                         pokemons?.map(pokemon => (
                             <div key={pokemon.name} className='pokemon'>
-                                <GoStarFill size={15} />
+                                {!favIcon ? <GoStarFill size={15} color="gold" /> : <GoStarFill size={15} />}
                                 <Link to={`/pokemon/${pokemon.name}`}
                                     className='pokemon-link'
                                 >{pokemon.name}</Link>

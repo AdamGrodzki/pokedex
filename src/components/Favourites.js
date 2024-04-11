@@ -11,6 +11,7 @@ import PikachuLove from "../../src/assets/images/pikachuLove.gif"
 const FavouritePokemon = () => {
     const [pokemons, setPokemons] = useState([]);
 
+
     useEffect(() => {
         const fetchData = async () => {
             const data = await Promise.all(

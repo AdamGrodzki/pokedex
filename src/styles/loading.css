@@ -7,7 +7,7 @@ body {
     align-items: center;
     justify-content: center;
     pointer-events: none;
-    animation: loading-logo-spin infinite 10s linear;
+    animation: loading-logo-spin 7s infinite;
 }
 
 @keyframes loading-logo-spin {

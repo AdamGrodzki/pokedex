@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Modal from '../components/Modal'
 import { colorSwitcher } from './PokemonSwitchColors';
-import FavouritePokemon from './Favourites';
 import typeIcons from './TypeIcons';
 import "../styles/pokemonCard.css"
 import defaultPokemonImage from "../../src/assets/images/pokeball.gif"
@@ -15,22 +14,20 @@ import { GiSpinningSword } from "react-icons/gi";
 import { GiBoltShield } from "react-icons/gi";
 
 
-export let favArray = [];
+export let favArray = JSON.parse(localStorage.getItem('favouritePokemon')) || [];
+
+export let favIcon = Boolean;
 
 const PokemonCard = ({ details }) => {
     const { name, id, sprites, stats, types } = details;
     const [isFavourite, setIsFavourite] = useState(false);
     const [showModal, setShowModal] = useState(false);
-    // const [totalStats, setTotalStats] = useState(0);
-
 
     const handleFavouriteToggle = () => {
         let favouritePokemon = JSON.parse(localStorage.getItem('favouritePokemon')) || [];
 
         if (isFavourite) {
             favouritePokemon = favouritePokemon.filter(pokemonId => pokemonId !== details.id);
-            setIsFavourite(false);
-
             favArray = favArray.filter(id => id !== details.id);
         } else {
             if (favArray.length >= 6) {
@@ -38,35 +35,25 @@ const PokemonCard = ({ details }) => {
                 return;
             }
             favouritePokemon.push(details.id);
-            setIsFavourite(true);
+            favArray.push(details.id);
 
-            if (!favArray.includes(details.id)) {
-                favArray.push(details.id);
-            }
         }
+        setIsFavourite(!isFavourite)
         localStorage.setItem('favouritePokemon', JSON.stringify(favouritePokemon));
 
-        <FavouritePokemon />
+        favIcon = isFavourite;
     };
-
 
     const closeModal = () => {
         setShowModal(false);
     };
 
     useEffect(() => {
-        // po odswiezeniu strony pokemon zostaje z gwiazdka
         const favouritePokemon = JSON.parse(localStorage.getItem('favouritePokemon'));
         if (favouritePokemon && favouritePokemon.includes(id)) {
             setIsFavourite(true);
         }
     }, [id]);
-
-    // useEffect(() => {
-    //     const sum = stats.reduce((acc, stat) => acc + stat.base_stat, 0);
-    //     setTotalStats(sum);
-    //     console.log("stat:", sum)
-    // }, [stats]);
 
     const getTypeIcon = (type) => {
         const icon = typeIcons[type];
@@ -85,12 +72,6 @@ const PokemonCard = ({ details }) => {
                     <span>ID: </span>
                     #{id.toString().padStart(3, '0')}
                 </div>
-                {/* {isFavourite && (
-                    <div className="total-stats">
-                        <span>Total Stats: </span>
-                        {totalStats}
-                    </div>
-                )} */}
             </div>
 
             <Modal isOpen={showModal} onClose={closeModal}>
