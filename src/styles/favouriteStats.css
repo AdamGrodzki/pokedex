@@ -2,8 +2,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-
-
     padding: 30px;
     margin: 20px;
     background-color: #ffcd02;
@@ -14,6 +12,7 @@
     margin-left: auto;
     margin-right: auto;
     filter: drop-shadow(5px 5px 0px rgba(0, 0, 0, 10));
+    box-shadow: 0 0 10px 5px #000;
 }
 
 .combat-power {
@@ -32,6 +31,60 @@
 .total-stats {
     font-weight: bold;
     color: inherit;
+}
+
+.favourite-stats h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #003060;
+}
+
+.combat-power {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #003060;
+    margin-bottom: 10px;
+}
+
+.combat-power img {
+    width: 64px;
+    height: 64px;
+    margin-right: 8px;
+}
+
+.total-stats {
+    color: #006633;
+    font-weight: bold;
+}
+
+.stat-breakdown {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+    margin-top: 20px;
+}
+
+.stat-breakdown p {
+    display: flex;
+    font-size: 16px;
+    color: #003060;
+}
+
+.stat-breakdown svg {
+    margin-right: 8px;
+    filter: drop-shadow(2px 3px 10px rgba(0, 0, 0, 0.5));
+}
+
+.stat-breakdown svg:hover {
+    filter: saturate(200%);
+
+}
+
+.stat-breakdown span {
+    font-weight: bold;
 }
 
 @keyframes pulse {

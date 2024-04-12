@@ -13,17 +13,34 @@
 
 .nav-link {
     color: #ffcd02;
-    margin-left: 10px;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.nav-link-container li {
+    margin: 0 20px;
 }
 
 .nav-link:focus {
-    color: #ffcc02e5;
-    color: #fff;
+    color: #003060;
 }
 
 .nav-link-container {
     display: flex;
-    justify-content: space-around;
-    align-items: flex-end;
     list-style-type: none;
+}
+
+
+.nav-link:hover,
+.nav-link:focus {
+    background-color: #555;
+}
+
+.nav-link.active {
+    background-color: #ffcd02;
+    color: #003060;
 }

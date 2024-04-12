@@ -6,8 +6,6 @@ import "../styles/favourite.css"
 import PikachuLove from "../../src/assets/images/pikachuLove.gif"
 
 
-
-
 const FavouritePokemon = () => {
     const [pokemons, setPokemons] = useState([]);
 
@@ -26,6 +24,13 @@ const FavouritePokemon = () => {
         fetchData();
     }, []);
 
+    const removeFavourite = (pokemonName) => {
+        const updatedFavArray = favArray.filter((item) => item !== pokemonName);
+        localStorage.setItem('favArray', JSON.stringify(updatedFavArray));
+        setPokemons(pokemons.filter((pokemon) => pokemon.name !== pokemonName));
+    };
+
+
     return (
         <div>
             <div className='favourite-container'>
@@ -37,6 +42,7 @@ const FavouritePokemon = () => {
                         <Link to={`/pokemon/${pokemon.name}`} className="pokemon-link">
                             {pokemon.name}
                         </Link>
+                        <button className='remove-btn' onClick={() => removeFavourite(pokemon.name)}>&times;</button>
                     </div>
                 ))}
             </div>
@@ -46,3 +52,4 @@ const FavouritePokemon = () => {
 };
 
 export default FavouritePokemon;
+
