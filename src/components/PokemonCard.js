@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import Modal from '../components/Modal'
-import { colorSwitcher } from './PokemonSwitchColors';
-import typeIcons from './TypeIcons';
+import React, { useState, useEffect } from "react";
+import Modal from "../components/Modal";
+import { colorSwitcher } from "./PokemonSwitchColors";
+import typeIcons from "./TypeIcons";
 import "../styles/pokemonCard.css"
 import defaultPokemonImage from "../../src/assets/images/pokeball.gif"
 
@@ -13,35 +13,28 @@ import { GiSteeltoeBoots } from "react-icons/gi";
 import { GiSpinningSword } from "react-icons/gi";
 import { GiBoltShield } from "react-icons/gi";
 
-
-export let favArray = JSON.parse(localStorage.getItem('favouritePokemon')) || [];
-
-export let favIcon = Boolean;
+import { FAVOURITE_POKEMON_KEY } from "./LocalStorage";
 
 const PokemonCard = ({ details }) => {
     const { name, id, sprites, stats, types } = details;
-    const [isFavourite, setIsFavourite] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [isFavourite, setIsFavourite] = useState(false);
 
     const handleFavouriteToggle = () => {
-        let favouritePokemon = JSON.parse(localStorage.getItem('favouritePokemon')) || [];
+        let favouritePokemon = JSON.parse(localStorage.getItem(FAVOURITE_POKEMON_KEY)) || [];
 
         if (isFavourite) {
             favouritePokemon = favouritePokemon.filter(pokemonId => pokemonId !== details.id);
-            favArray = favArray.filter(id => id !== details.id);
         } else {
-            if (favArray.length >= 6) {
+            if (favouritePokemon.length >= 6) {
                 setShowModal(true);
                 return;
             }
             favouritePokemon.push(details.id);
-            favArray.push(details.id);
-
         }
-        setIsFavourite(!isFavourite)
-        localStorage.setItem('favouritePokemon', JSON.stringify(favouritePokemon));
 
-        favIcon = isFavourite;
+        setIsFavourite(!isFavourite)
+        localStorage.setItem(FAVOURITE_POKEMON_KEY, JSON.stringify(favouritePokemon));
     };
 
     const closeModal = () => {
@@ -49,7 +42,7 @@ const PokemonCard = ({ details }) => {
     };
 
     useEffect(() => {
-        const favouritePokemon = JSON.parse(localStorage.getItem('favouritePokemon'));
+        const favouritePokemon = JSON.parse(localStorage.getItem(FAVOURITE_POKEMON_KEY)) || [];
         if (favouritePokemon && favouritePokemon.includes(id)) {
             setIsFavourite(true);
         }
@@ -57,7 +50,7 @@ const PokemonCard = ({ details }) => {
 
     const getTypeIcon = (type) => {
         const icon = typeIcons[type];
-        if (typeof icon === 'string') {
+        if (typeof icon === "string") {
             return <img src={icon} alt={type} />;
         }
         return null;
@@ -85,7 +78,7 @@ const PokemonCard = ({ details }) => {
                     <button className='fav-button' onClick={handleFavouriteToggle}>
                         {isFavourite ? <GoStarFill size={30} color="gold" /> : <GoStarFill size={30} />}
                     </button>
-                    <p className='types-icon'>
+                    <p className="types-icon">
                         {types.map((type) => (
                             <span key={type.type.name}>{getTypeIcon(type.type.name)}</span>
                         ))}
@@ -93,12 +86,12 @@ const PokemonCard = ({ details }) => {
 
                     <img src={sprites.front_default || sprites.other.home.front_default || defaultPokemonImage} alt={name} className="pokemon-img" />
                     <div className="stats-info">
-                        <p className='info'><FaHeart color='#69DC12' size={25} /> HP:{stats[0].base_stat}</p>
-                        <p className='info'><RiSwordFill color='#E50000' size={25} /> ATTACK:{stats[1].base_stat}</p>
-                        <p className='info'><FaShield color='#FFFF00' size={25} /> DEFENSE:{stats[2].base_stat}</p>
-                        <p className='info'><GiSteeltoeBoots color='#ffc0cb' size={25} /> SPEED:{stats[5].base_stat}</p>
-                        <p className='info'><GiSpinningSword color='#0000ff' size={25} /> SPECIAL ATTACK:{stats[3].base_stat}</p>
-                        <p className='info'><GiBoltShield color='#007300' size={25} /> SPECIAL DEFENSE:{stats[4].base_stat}</p>
+                        <p className="info"><FaHeart color="#69DC12" size={25} /> HP:{stats[0].base_stat}</p>
+                        <p className="info"><RiSwordFill color="#E50000" size={25} /> ATTACK:{stats[1].base_stat}</p>
+                        <p className="info"><FaShield color="#FFFF00" size={25} /> DEFENSE:{stats[2].base_stat}</p>
+                        <p className="info"><GiSteeltoeBoots color="#ffc0cb" size={25} /> SPEED:{stats[5].base_stat}</p>
+                        <p className="info"><GiSpinningSword color="#0000ff" size={25} /> SPECIAL ATTACK:{stats[3].base_stat}</p>
+                        <p className="info"><GiBoltShield color="#007300" size={25} /> SPECIAL DEFENSE:{stats[4].base_stat}</p>
 
                     </div>
                 </div>

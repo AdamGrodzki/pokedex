@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { favArray } from "./PokemonCard";
-import { FavouriteStats } from './FavouriteStats';
+import { FavouriteStats } from "./FavouriteStats";
 import "../styles/favourite.css"
 import PikachuLove from "../../src/assets/images/pikachuLove.gif"
-
+import { getFavouritePokemon, removeFavouritePokemon } from "./LocalStorage";
 
 const FavouritePokemon = () => {
     const [pokemons, setPokemons] = useState([]);
 
-
     useEffect(() => {
         const fetchData = async () => {
+            const favouritePokemon = getFavouritePokemon();
             const data = await Promise.all(
-                favArray.map(async (item) => {
+                favouritePokemon.map(async (item) => {
                     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${item}/`);
                     return await response.json();
                 })
@@ -24,17 +23,15 @@ const FavouritePokemon = () => {
         fetchData();
     }, []);
 
-    const removeFavourite = (pokemonName) => {
-        const updatedFavArray = favArray.filter((item) => item !== pokemonName);
-        localStorage.setItem('favArray', JSON.stringify(updatedFavArray));
-        setPokemons(pokemons.filter((pokemon) => pokemon.name !== pokemonName));
-    };
-
+    const removeFavourite = (id) => {
+        removeFavouritePokemon(id);
+        setPokemons(pokemons.filter((pokemon) => pokemon.id !== id));
+    }
 
     return (
         <div>
-            <div className='favourite-container'>
-                <h1>Favourite <img src={PikachuLove} alt='Pikachu jumps in the hearts' /> Pokemon</h1>
+            <div className="favourite-container">
+                <h1>Favourite <img src={PikachuLove} alt="Pikachu jumps in the hearts" /> Pokemon</h1>
             </div>
             <div className="fav-poke-container">
                 {pokemons?.map((pokemon) => (
@@ -42,7 +39,7 @@ const FavouritePokemon = () => {
                         <Link to={`/pokemon/${pokemon.name}`} className="pokemon-link">
                             {pokemon.name}
                         </Link>
-                        <button className='remove-btn' onClick={() => removeFavourite(pokemon.name)}>&times;</button>
+                        <button className='remove-btn' onClick={() => removeFavourite(pokemon.id)}>&times;</button>
                     </div>
                 ))}
             </div>
@@ -52,4 +49,3 @@ const FavouritePokemon = () => {
 };
 
 export default FavouritePokemon;
-

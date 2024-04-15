@@ -8,13 +8,6 @@
     src: url("../assets/fonts/PressStart2P-Regular.ttf");
 }
 
-
-/* CSS COLORS */
-/* h1 {
-    color: #ffcd02;
-    color: #003060;
-} */
-
 *,
 *:before,
 *:after {
@@ -28,7 +21,6 @@
 body {
     min-width: 100%;
     min-height: 100vh;
-    /* background-image: url("../assets/images/pokemonTheme.gif"); */
     background-image: url("../assets/images/pokemon-gif-wallpaper.gif");
     background-repeat: no-repeat;
     background-size: cover;

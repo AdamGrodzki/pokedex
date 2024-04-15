@@ -32,22 +32,22 @@ export const FavouriteStats = ({ favouritePokemons }) => {
                 const stats = pokemon.stats;
                 stats.forEach((stat) => {
                     switch (stat.stat.name) {
-                        case 'attack':
+                        case "attack":
                             attackSum += stat.base_stat;
                             break;
-                        case 'defense':
+                        case "defense":
                             defenseSum += stat.base_stat;
                             break;
-                        case 'special-attack':
+                        case "special-attack":
                             specialAttackSum += stat.base_stat;
                             break;
-                        case 'special-defense':
+                        case "special-defense":
                             specialDefenseSum += stat.base_stat;
                             break;
-                        case 'hp':
+                        case "hp":
                             hpSum += stat.base_stat;
                             break;
-                        case 'speed':
+                        case "speed":
                             speedSum += stat.base_stat;
                             break;
                         default:
@@ -70,14 +70,14 @@ export const FavouriteStats = ({ favouritePokemons }) => {
     return (
         <div className="favourite-stats">
             <h2>Total Stats for Favourite Pokemon</h2>
-            <p className="combat-power"><img src={combatPowerIcon} alt="combat-power" /> Sum of Stats: <span className='total-stats'>{totalAttack + totalDefense + totalSpecialAttack + totalSpecialDefense + totalHP + totalSpeed}</span></p>
+            <p className="combat-power"><img src={combatPowerIcon} alt="combat-power" /> Sum of Stats: <span className="total-stats">{totalAttack + totalDefense + totalSpecialAttack + totalSpecialDefense + totalHP + totalSpeed}</span></p>
             <div className="stat-breakdown">
-                <p><RiSwordFill color='#E50000' size={30} />Attack: <span>{totalAttack}</span></p>
-                <p><FaShield color='#FFFF00' size={30} />Defense: <span>{totalDefense}</span></p>
-                <p><GiSpinningSword color='#0000ff' size={30} /> Special Attack: <span>{totalSpecialAttack}</span></p>
-                <p><GiBoltShield color='#007300' size={30} />Special Defense: <span>{totalSpecialDefense}</span></p>
-                <p><FaHeart color='#69DC12' size={30} />HP: <span>{totalHP}</span></p>
-                <p><GiSteeltoeBoots color='#ffc0cb' size={30} /> Speed: <span>{totalSpeed}</span></p>
+                <p><RiSwordFill color="#E50000" size={30} />Attack: <span>{totalAttack}</span></p>
+                <p><FaShield color="#FFFF00" size={30} />Defense: <span>{totalDefense}</span></p>
+                <p><GiSpinningSword color="#0000ff" size={30} /> Special Attack: <span>{totalSpecialAttack}</span></p>
+                <p><GiBoltShield color="#007300" size={30} />Special Defense: <span>{totalSpecialDefense}</span></p>
+                <p><FaHeart color="#69DC12" size={30} />HP: <span>{totalHP}</span></p>
+                <p><GiSteeltoeBoots color="#ffc0cb" size={30} /> Speed: <span>{totalSpeed}</span></p>
             </div>
         </div>
     );

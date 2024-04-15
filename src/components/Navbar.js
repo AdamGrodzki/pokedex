@@ -7,8 +7,8 @@ export const Navbar = () => {
     return (
         <nav className="navbar">
             <ul className="nav-link-container">
-                <li><Link className={`nav-link ${location.pathname === '/' ? 'active' : ''}`} to="/">Home</Link></li>
-                <li><Link className={`nav-link ${location.pathname === '/favourite' ? 'active' : ''}`} to="/favourite">Favourites</Link></li>
+                <li><Link className={`nav-link ${location.pathname === "/" ? "active" : ''}`} to="/">Home</Link></li>
+                <li><Link className={`nav-link ${location.pathname === "/favourite" ? "active" : ''}`} to="/favourite">Favourites</Link></li>
             </ul>
         </nav>
     );

@@ -1,20 +1,14 @@
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from "react-router-dom";
 import "../styles/pokemonList.css";
-import Button from './Button';
+import Button from "./Button";
 import { useState, useEffect } from "react";
 import { MdOutlineCatchingPokemon } from "react-icons/md";
-import { GoStarFill } from "react-icons/go";
-import { favIcon } from './PokemonCard';
-
 
 const PokemonList = () => {
-
     const [pokemons, setPokemons] = useState([]);
     const [previousUrl, setPreviousUrl] = useState("");
     const [nextUrl, setNextUrl] = useState("");
     const [searchParams, setSearchParams] = useSearchParams();
-
-
 
     useEffect(() => {
         async function fetchData() {
@@ -49,28 +43,25 @@ const PokemonList = () => {
     }
 
     return (
-
         <div>
-            <h1 className='heading-list'>
-                Poke<div className='spin'><MdOutlineCatchingPokemon size={45} /></div><span>dex</span>
+            <h1 className="heading-list">
+                Poke<div className="spin"><MdOutlineCatchingPokemon size={45} /></div><span>dex</span>
             </h1>
-
-            <div className='poke-container'>
+            <div className="poke-container">
                 {
                     pokemons && (
                         pokemons?.map(pokemon => (
-                            <div key={pokemon.name} className='pokemon'>
-                                {!favIcon ? <GoStarFill className='star-icon' size={20} color="gold" /> : <GoStarFill size={20} />}
+                            <div key={pokemon.name} className="pokemon">
+                                {/* {!favIcon ? <GoStarFill className="star-icon" size={20} color="gold" /> : <GoStarFill size={20} />} */}
                                 <Link to={`/pokemon/${pokemon.name}`}
-                                    className='pokemon-link'
+                                    className="pokemon-link"
                                 >{pokemon.name}</Link>
                             </div>
                         ))
                     )
                 }
             </div>
-
-            <div className='buttons-wrap'>
+            <div className="buttons-wrap">
                 <Button disabled={previousUrl === null} onClick={handlePrevPage}>Previous</Button>
                 <Button disabled={nextUrl === null} onClick={handleNextPage}>Next</Button>
             </div>
@@ -78,6 +69,4 @@ const PokemonList = () => {
 
 }
 
-
 export default PokemonList;
-
