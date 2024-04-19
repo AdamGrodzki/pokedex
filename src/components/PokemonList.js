@@ -4,6 +4,8 @@ import Button from "./Button";
 import { useState, useEffect } from "react";
 import { MdOutlineCatchingPokemon } from "react-icons/md";
 
+// import FavoriteButton from "./FavouriteButton";
+
 const PokemonList = () => {
     const [pokemons, setPokemons] = useState([]);
     const [previousUrl, setPreviousUrl] = useState("");
@@ -51,6 +53,7 @@ const PokemonList = () => {
                 {
                     pokemons && (
                         pokemons?.map(pokemon => (
+
                             <div key={pokemon.name} className="pokemon">
                                 {/* {!favIcon ? <GoStarFill className="star-icon" size={20} color="gold" /> : <GoStarFill size={20} />} */}
                                 <Link to={`/pokemon/${pokemon.name}`}

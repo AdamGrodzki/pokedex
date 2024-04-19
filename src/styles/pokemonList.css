@@ -5,13 +5,27 @@
     filter: drop-shadow(5px 5px 0px rgba(0, 0, 0, 10));
 }
 
-.poke-container {
+/* .poke-container {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 15px 15px;
-    width: 1000px;
+    width: fit-content;
     margin: auto;
+}  */
+
+.poke-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 15px;
+    max-width: 1100px;
+    margin: 0 auto;
 }
+
+/* .poke-container .pokemon {
+    width: 180px;
+    height: 180px;
+    margin: 15px;
+} */
 
 .spin {
     color: #f0f0f0;

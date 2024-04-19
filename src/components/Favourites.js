@@ -49,3 +49,4 @@ const FavouritePokemon = () => {
 };
 
 export default FavouritePokemon;
+

@@ -23,6 +23,9 @@
 
 .nav-link-container li {
     margin: 0 20px;
+    width: calc(100% / 6);
+    width: 16.6667%;
+    box-sizing: border-box;
 }
 
 .nav-link:focus {
