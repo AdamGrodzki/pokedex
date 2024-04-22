@@ -140,7 +140,7 @@ const PokemonCard = ({ details }) => {
                 </div>
             </div>
 
-            <Modal isOpen={showModal} onClose={() => setShowModal(false)}>
+            <Modal isOpen={showModal} onClose={setShowModal}>
                 <div className="modal-content">
                     <h2>Oops!</h2>
                     <p>You can only have a maximum of {FAVOURITE_MAX_COUNT} favorite Pokemon.</p>
@@ -150,7 +150,7 @@ const PokemonCard = ({ details }) => {
 
             <div>
                 <div className="stats-container" style={{ background: colorSwitcher(types[0].type.name) }}>
-                    <FavoriteButton isFavourite={isFavouritePokemon} onToggle={handleToggleFavourite} disabled={isMaxFavouriteCount} />
+                    <FavoriteButton isFavourite={isFavouritePokemon} onToggle={handleToggleFavourite} disabled={isMaxFavouriteCount && !isFavouritePokemon} />
                     <p className="types-icon">
                         {types.map((type) => (
                             <span key={type.type.name}>{getTypeIcon(type.type.name)}</span>

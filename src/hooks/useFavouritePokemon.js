@@ -17,6 +17,7 @@ const useFavouritePokemon = (pokemonId) => {
     const isMaxFavouriteCount = favouritePokemon.length === FAVOURITE_MAX_COUNT;
 
 
+
     const getFromLocalStorage = () => {
         const storedPokemon = localStorage.getItem(FAVOURITE_POKEMON_KEY);
         setFavouritePokemon(storedPokemon ? JSON.parse(storedPokemon) : []);
