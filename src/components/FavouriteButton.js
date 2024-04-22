@@ -1,9 +1,9 @@
 import React from "react";
 import { GoStarFill } from "react-icons/go";
 
-const FavoriteButton = ({ isFavourite, onToggle }) => {
+const FavoriteButton = ({ isFavourite, onToggle, isMaxFavouriteCount, disabled }) => {
     return (
-        <button className='fav-button' onClick={onToggle}>
+        <button className='fav-button' onClick={onToggle} disabled={disabled}>
             {isFavourite ? <GoStarFill size={30} color="gold" /> : <GoStarFill size={30} />}
         </button>
     );

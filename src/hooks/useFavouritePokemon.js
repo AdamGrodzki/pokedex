@@ -1,33 +1,56 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+const FAVOURITE_POKEMON_KEY = 'favouritePokemon';
+export const FAVOURITE_MAX_COUNT = 6;
 
-const useFavouritePokemon = (key) => {
-    const [favouritePokemon, setFavouritePokemon] = useState(() => {
-        const storedPokemon = localStorage.getItem(key);
-        return storedPokemon ? JSON.parse(storedPokemon) : [];
-    });
 
-    const addFavouritePokemon = (pokemonId) => {
-        if (!favouritePokemon.includes(pokemonId)) {
+const useFavouritePokemon = (pokemonId) => {
+    const [favouritePokemon, setFavouritePokemon] = useState([]);
+    useEffect(() => {
+        getFromLocalStorage()
+    }, [])
+
+    useEffect(() => {
+        updateFavouritePokemonLS(favouritePokemon)
+    }, [favouritePokemon])
+
+    const isFavouritePokemon = favouritePokemon.includes(pokemonId);
+    const isMaxFavouriteCount = favouritePokemon.length === FAVOURITE_MAX_COUNT;
+
+
+    const getFromLocalStorage = () => {
+        const storedPokemon = localStorage.getItem(FAVOURITE_POKEMON_KEY);
+        setFavouritePokemon(storedPokemon ? JSON.parse(storedPokemon) : []);
+    }
+
+    const addFavouritePokemon = () => {
+        if (!isFavouritePokemon && !isMaxFavouriteCount) {
             const updatedPokemon = [...favouritePokemon, pokemonId];
             setFavouritePokemon(updatedPokemon);
-            localStorage.setItem(key, JSON.stringify(updatedPokemon));
         }
     };
 
     const removeFavouritePokemon = (pokemonId) => {
         const updatedPokemon = favouritePokemon.filter((id) => id !== pokemonId);
         setFavouritePokemon(updatedPokemon);
-        localStorage.setItem(key, JSON.stringify(updatedPokemon));
+        updateFavouritePokemonLS(updatedPokemon);
+
     };
 
-    const isFavouritePokemon = (pokemonId) => {
-        return favouritePokemon.includes(pokemonId);
+    const updateFavouritePokemonLS = (newFavouritePokemon) => {
+        localStorage.setItem(FAVOURITE_POKEMON_KEY, JSON.stringify(newFavouritePokemon));
     };
 
-    return { favouritePokemon, addFavouritePokemon, removeFavouritePokemon, isFavouritePokemon };
+
+    return {
+        favouritePokemon,
+        addFavouritePokemon,
+        removeFavouritePokemon,
+        isFavouritePokemon,
+        isMaxFavouriteCount
+    };
 };
 
 export default useFavouritePokemon;
 
-// USE EFFECT 4 LINIA
+
 

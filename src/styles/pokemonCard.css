@@ -103,7 +103,10 @@
     transform: scale(1.1);
 }
 
-
+.fav-button:disabled {
+    pointer-events: none;
+    /* cursor: not-allowed; */
+}
 
 @keyframes pulse {
     0% {

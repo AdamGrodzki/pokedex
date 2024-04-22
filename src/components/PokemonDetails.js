@@ -9,14 +9,17 @@ const PokemonDetails = () => {
     const [details, setDetails] = useState(null);
     const navigate = useNavigate();
 
-
-    useEffect(() => {
-        async function fetchDetails() {
+    async function fetchDetails() {
+        try {
             const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
             const data = await response.json();
             setDetails(data);
+        } catch {
+            console.log("error")
         }
+    }
 
+    useEffect(() => {
         fetchDetails();
     }, [name]);
 
