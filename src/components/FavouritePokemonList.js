@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const FavouritePokemonList = ({ pokemons, handleRemoveFavourite}) => {
+const FavouritePokemonList = ({ pokemons, handleRemoveFavourite }) => {
     return (
         <div className="fav-poke-container">
             {pokemons?.map((pokemon) => (
@@ -9,7 +9,7 @@ const FavouritePokemonList = ({ pokemons, handleRemoveFavourite}) => {
                     <Link to={`/pokemon/${pokemon.id}`} className="pokemon-link">
                         {pokemon.name}
                     </Link>
-                    <button className='remove-btn' onClick={() => handleRemoveFavourite(pokemon.id)}>&times;</button>
+                    <button className='remove-btn' onClick={() => handleRemoveFavourite(pokemon.name)}>&times;</button>
                 </div>
             ))}
         </div>

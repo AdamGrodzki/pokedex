@@ -6,9 +6,9 @@ import useFavouritePokemon from "../hooks/useFavouritePokemon";
 
 import FavouritePokemonList from "./FavouritePokemonList";
 
-const FavouritePokemon = (id) => {
+const FavouritePokemon = (name) => {
     const [pokemons, setPokemons] = useState([]);
-    const { favouritePokemon, removeFavouritePokemon } = useFavouritePokemon(id);
+    const { favouritePokemon, removeFavouritePokemon } = useFavouritePokemon(name);
     useEffect(() => {
         const fetchData = async () => {
             try {
