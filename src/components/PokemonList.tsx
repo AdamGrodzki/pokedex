@@ -1,24 +1,27 @@
 import { useSearchParams } from "react-router-dom";
 import "../styles/pokemonList.css";
 import Button from "./Button";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { MdOutlineCatchingPokemon } from "react-icons/md";
 import PokemonContainer from "./PokemonContainer";
 
+interface Pokemon {
+    name: string;
+  }
 
-const PokemonList = () => {
-    const [pokemons, setPokemons] = useState([]);
-    const [previousUrl, setPreviousUrl] = useState("");
-    const [nextUrl, setNextUrl] = useState("");
+const PokemonList: React.FC  = () => {
+    const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+    const [previousUrl, setPreviousUrl] = useState<string>("");
+    const [nextUrl, setNextUrl] = useState<string>("");
     const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
         async function fetchData() {
             let url = "https://pokeapi.co/api/v2/pokemon";
             if (searchParams.get("page")) {
-                const currentPage = searchParams.get("page") * 1;
-                if (currentPage > 1) {
-                    url = `https://pokeapi.co/api/v2/pokemon?offset=${(currentPage - 1) * 20}`;
+                const currentPage = searchParams.get("page") || "1";
+                if (Number(currentPage) > 1) {
+                    url = `https://pokeapi.co/api/v2/pokemon?offset=${(Number(currentPage) - 1) * 20}`;
                 }
             }
             const response = await fetch(url);
@@ -33,14 +36,14 @@ const PokemonList = () => {
     }, [searchParams]);
 
     const handleNextPage = () => {
-        const currentPage = (searchParams.get("page") || 1) * 1;
-        setSearchParams({ page: currentPage + 1 })
+        const currentPage = (searchParams.get("page") || 1) || "1";
+        setSearchParams({ page: (Number(currentPage) + 1).toString()})
     };
 
     const handlePrevPage = () => {
-        const currentPage = (searchParams.get("page") || 1) * 1;
-        if (currentPage > 1) {
-            setSearchParams({ page: currentPage - 1 });
+        const currentPage = (searchParams.get("page") || 1) || "1";
+        if (Number(currentPage) > 1) {
+            setSearchParams({ page: (Number(currentPage) - 1).toString() });
         }
     }
 

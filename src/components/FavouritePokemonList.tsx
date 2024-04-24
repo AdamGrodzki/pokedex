@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 
-const FavouritePokemonList = ({ pokemons, handleRemoveFavourite }) => {
+const FavouritePokemonList = ({ pokemons, handleRemoveFavourite }: any) => {
     return (
         <div className="fav-poke-container">
-            {pokemons?.map((pokemon) => (
+            {pokemons?.map((pokemon: any) => (
                 <div key={pokemon.id} className="pokemon">
                     <Link to={`/pokemon/${pokemon.id}`} className="pokemon-link">
                         {pokemon.name}

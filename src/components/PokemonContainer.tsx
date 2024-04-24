@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import useFavouritePokemon from "../hooks/useFavouritePokemon";
 import { FaStar, FaRegStar } from "react-icons/fa";
@@ -7,7 +6,7 @@ import "../styles/pokemonContainer.css"
 
 
 
-const PokemonContainer = ({ pokemon }) => {
+const PokemonContainer = ({ pokemon }:any) => {
     const { favouritePokemon } = useFavouritePokemon(pokemon.name);
 
     return (

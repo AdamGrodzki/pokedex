@@ -1,4 +1,3 @@
-import React from "react";
 import App from "./App";
 
 
@@ -7,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 
 import "./styles/global.css"
 
-const root = createRoot(document.getElementById("root"));
+const root = createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <Router>
     <App />

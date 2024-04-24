@@ -10,10 +10,20 @@ import { GiSpinningSword } from 'react-icons/gi';
 import { GiBoltShield } from 'react-icons/gi';
 import { GoStarFill } from "react-icons/go";
 import Button from './Button';
-
 import useFavouritePokemon from "../hooks/useFavouritePokemon";
 
-const PokemonCard = ({ details }) => {
+
+interface PokemonCardProps {
+    details: {
+        name: string;
+        id: number;
+        sprites: { front_default: string };
+        stats: { base_stat: number }[];
+        types: { type: { name: string } }[];
+    };
+}
+
+const PokemonCard: React.FC<PokemonCardProps> = ({ details }: any) => {
     const { name, id, sprites, stats, types } = details;
     const { addFavouritePokemon, removeFavouritePokemon, isFavouritePokemon, isMaxFavouriteCount } = useFavouritePokemon(name);
 
@@ -23,7 +33,7 @@ const PokemonCard = ({ details }) => {
             : !isMaxFavouriteCount && addFavouritePokemon(name);
     };
 
-    const getTypeIcon = (type) => {
+    const getTypeIcon = (type: string) => {
         const icon = typeIcons[type];
         return typeof icon === "string" ? <img src={icon} alt={type} /> : null;
     };
@@ -45,7 +55,7 @@ const PokemonCard = ({ details }) => {
                         {isFavouritePokemon ? <GoStarFill size={30} color="gold" /> : <GoStarFill size={30} />}
                     </Button>
                     <p className="types-icon">
-                        {types.map((type) => (
+                        {types.map((type: any) => (
                             <span key={type.type.name}>{getTypeIcon(type.type.name)}</span>
                         ))}
                     </p>

@@ -1,4 +1,4 @@
-const typeIcons = {
+const typeIcons: any = {
     grass: "https://archives.bulbagarden.net/media/upload/9/9d/GrassIC_RR.png",
     fire: "https://archives.bulbagarden.net/media/upload/1/1a/FireIC_RR.png",
     water: "https://archives.bulbagarden.net/media/upload/9/94/WaterIC_RR.png",

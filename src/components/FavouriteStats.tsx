@@ -9,7 +9,7 @@ import { GiSpinningSword } from "react-icons/gi";
 import { GiBoltShield } from "react-icons/gi";
 
 
-export const FavouriteStats = ({ favouritePokemons }) => {
+export const FavouriteStats = ({ favouritePokemons }: any) => {
     const [totalAttack, setTotalAttack] = useState(0);
     const [totalDefense, setTotalDefense] = useState(0);
     const [totalSpecialAttack, setTotalSpecialAttack] = useState(0);
@@ -26,9 +26,9 @@ export const FavouriteStats = ({ favouritePokemons }) => {
             let hpSum = 0;
             let speedSum = 0;
 
-            favouritePokemons.forEach((pokemon) => {
+            favouritePokemons.forEach((pokemon: any) => {
                 const stats = pokemon.stats;
-                stats.forEach((stat) => {
+                stats.forEach((stat: any) => {
                     switch (stat.stat.name) {
                         case "attack":
                             attackSum += stat.base_stat;

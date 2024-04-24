@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { FavouriteStats } from "./FavouriteStats";
 import "../styles/favourite.css"
 import PikachuLove from "../../src/assets/images/pikachuLove.gif"
 import useFavouritePokemon from "../hooks/useFavouritePokemon";
 import FavouritePokemonList from "./FavouritePokemonList";
 
-const FavouritePokemon = (name) => {
-    const [pokemons, setPokemons] = useState([]);
+const FavouritePokemon = (name: any) => {
+    const [pokemons, setPokemons] = useState<any>([]);
     const { favouritePokemon, removeFavouritePokemon } = useFavouritePokemon(name);
     useEffect(() => {
         const fetchData = async () => {

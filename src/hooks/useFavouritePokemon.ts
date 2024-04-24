@@ -3,8 +3,8 @@ const FAVOURITE_POKEMON_KEY = 'favouritePokemon';
 export const FAVOURITE_MAX_COUNT = 6;
 
 
-const useFavouritePokemon = (pokemonName) => {
-    const [favouritePokemon, setFavouritePokemon] = useState([]);
+const useFavouritePokemon = (pokemonName: string) => {
+    const [favouritePokemon, setFavouritePokemon] = useState<string[]>([]);
     useEffect(() => {
         getFromLocalStorage()
     }, [])
@@ -30,14 +30,14 @@ const useFavouritePokemon = (pokemonName) => {
         }
     };
 
-    const removeFavouritePokemon = (pokemonName) => {
+    const removeFavouritePokemon = (pokemonName: string) => {
         const updatedPokemon = favouritePokemon.filter((name) => name !== pokemonName);
         setFavouritePokemon(updatedPokemon);
         updateFavouritePokemonLS(updatedPokemon);
 
     };
 
-    const updateFavouritePokemonLS = (newFavouritePokemon) => {
+    const updateFavouritePokemonLS = (newFavouritePokemon: string[]) => {
         localStorage.setItem(FAVOURITE_POKEMON_KEY, JSON.stringify(newFavouritePokemon));
     };
 

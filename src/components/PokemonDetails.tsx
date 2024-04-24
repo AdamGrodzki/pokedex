@@ -4,9 +4,10 @@ import Loading from "./Loading";
 import PokemonCard from "./PokemonCard";
 import "../styles/pokemonDetails.css"
 
+
 const PokemonDetails = () => {
     const { name } = useParams();
-    const [details, setDetails] = useState(null);
+    const [details, setDetails] = useState<any>(null);
     const navigate = useNavigate();
 
     async function fetchDetails() {
