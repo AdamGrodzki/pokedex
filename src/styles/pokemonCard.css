@@ -69,7 +69,6 @@
 }
 
 .info {
-    /* text-shadow: 0px 0px 2px black; */
     display: flex;
     align-items: center;
     gap: 15px;
@@ -105,7 +104,6 @@
 
 .fav-button:disabled {
     pointer-events: none;
-    /* cursor: not-allowed; */
 }
 
 @keyframes pulse {

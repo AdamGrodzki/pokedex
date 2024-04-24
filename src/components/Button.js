@@ -1,14 +1,15 @@
 import "../styles/button.css"
 
-const Button = ({ onClick, disabled, children }) => {
+const Button = ({ onClick, disabled, children, className }) => {
 
     return (
         <button
-            className="button-text"
+            className={className}
             onClick={onClick}
             disabled={disabled}
         >
-            {children}</button>
+            {children}
+        </button>
     );
 }
 

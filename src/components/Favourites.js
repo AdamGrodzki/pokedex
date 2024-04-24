@@ -3,7 +3,6 @@ import { FavouriteStats } from "./FavouriteStats";
 import "../styles/favourite.css"
 import PikachuLove from "../../src/assets/images/pikachuLove.gif"
 import useFavouritePokemon from "../hooks/useFavouritePokemon";
-
 import FavouritePokemonList from "./FavouritePokemonList";
 
 const FavouritePokemon = (name) => {

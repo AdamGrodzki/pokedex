@@ -1,8 +1,5 @@
-import React, { useState } from 'react';
-import Modal from './Modal';
 import { colorSwitcher } from './PokemonSwitchColors';
 import typeIcons from './TypeIcons';
-import FavoriteButton from './FavouriteButton';
 import '../styles/pokemonCard.css';
 import defaultPokemonImage from '../../src/assets/images/pokeball.gif';
 import { FaHeart } from 'react-icons/fa';
@@ -11,33 +8,25 @@ import { FaShield } from 'react-icons/fa6';
 import { GiSteeltoeBoots } from 'react-icons/gi';
 import { GiSpinningSword } from 'react-icons/gi';
 import { GiBoltShield } from 'react-icons/gi';
+import { GoStarFill } from "react-icons/go";
+import Button from './Button';
 
 import useFavouritePokemon from "../hooks/useFavouritePokemon";
-import { FAVOURITE_MAX_COUNT } from "../hooks/useFavouritePokemon";
 
 const PokemonCard = ({ details }) => {
     const { name, id, sprites, stats, types } = details;
-    const [showModal, setShowModal] = useState(false);
     const { addFavouritePokemon, removeFavouritePokemon, isFavouritePokemon, isMaxFavouriteCount } = useFavouritePokemon(name);
-
-
 
     const handleToggleFavourite = () => {
         isFavouritePokemon
             ? removeFavouritePokemon(name)
-            : !isMaxFavouriteCount
-                ? addFavouritePokemon(name)
-                : setShowModal(true);
+            : !isMaxFavouriteCount && addFavouritePokemon(name);
     };
 
     const getTypeIcon = (type) => {
         const icon = typeIcons[type];
-        if (typeof icon === "string") {
-            return <img src={icon} alt={type} />;
-        }
-        return null;
+        return typeof icon === "string" ? <img src={icon} alt={type} /> : null;
     };
-
 
     return (
         <div className="main">
@@ -49,17 +38,12 @@ const PokemonCard = ({ details }) => {
                 </div>
             </div>
 
-            <Modal isOpen={showModal} onClose={setShowModal}>
-                <div className="modal-content">
-                    <h2>Oops!</h2>
-                    <p>You can only have a maximum of {FAVOURITE_MAX_COUNT} favorite Pokemon.</p>
-                </div>
-            </Modal>
-
 
             <div>
                 <div className="stats-container" style={{ background: colorSwitcher(types[0].type.name) }}>
-                    <FavoriteButton isFavourite={isFavouritePokemon} onToggle={handleToggleFavourite} disabled={isMaxFavouriteCount && !isFavouritePokemon} />
+                    <Button onClick={handleToggleFavourite} className='fav-button' disabled={isMaxFavouriteCount && !isFavouritePokemon}>
+                        {isFavouritePokemon ? <GoStarFill size={30} color="gold" /> : <GoStarFill size={30} />}
+                    </Button>
                     <p className="types-icon">
                         {types.map((type) => (
                             <span key={type.type.name}>{getTypeIcon(type.type.name)}</span>

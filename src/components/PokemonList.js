@@ -59,11 +59,11 @@ const PokemonList = () => {
                 }
             </div>
             <div className="buttons-wrap">
-                <Button disabled={previousUrl === null} onClick={handlePrevPage}>Previous</Button>
-                <Button disabled={nextUrl === null} onClick={handleNextPage}>Next</Button>
+                <Button disabled={previousUrl === null} onClick={handlePrevPage} className="button-text">Previous</Button>
+                <Button disabled={nextUrl === null} onClick={handleNextPage} className="button-text">Next</Button>
             </div>
-        </div >);
-
+        </div >
+    );
 }
 
 export default PokemonList;
