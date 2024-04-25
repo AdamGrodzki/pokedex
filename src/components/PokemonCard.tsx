@@ -13,24 +13,29 @@ import Button from './Button';
 import useFavouritePokemon from "../hooks/useFavouritePokemon";
 
 
-interface PokemonCardProps {
-    details: {
-        name: string;
-        id: number;
-        sprites: { front_default: string };
-        stats: { base_stat: number }[];
-        types: { type: { name: string } }[];
+interface PokemonDetails {
+    name: string;
+    id: number;
+    height: number;
+    weight: number;
+    stats: { base_stat: number }[];
+    types: { type: { name: string } }[];
+    sprites: { front_default: string; other: { home: { front_default: string }}};
     };
-}
+interface PokemonCardProps {
+    details: PokemonDetails;
+  }
 
-const PokemonCard: React.FC<PokemonCardProps> = ({ details }: any) => {
+  
+
+const PokemonCard: React.FC<PokemonCardProps> = ({ details }) => {
     const { name, id, sprites, stats, types } = details;
     const { addFavouritePokemon, removeFavouritePokemon, isFavouritePokemon, isMaxFavouriteCount } = useFavouritePokemon(name);
 
     const handleToggleFavourite = () => {
         isFavouritePokemon
             ? removeFavouritePokemon(name)
-            : !isMaxFavouriteCount && addFavouritePokemon(name);
+            : !isMaxFavouriteCount && addFavouritePokemon();
     };
 
     const getTypeIcon = (type: string) => {
@@ -60,7 +65,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ details }: any) => {
                         ))}
                     </p>
 
-                    <img src={sprites.front_default || sprites.other.home.front_default || defaultPokemonImage} alt={name} className="pokemon-img" />
+                    <img src={sprites.front_default || sprites.other.home.front_default || defaultPokemonImage } alt={name} className="pokemon-img" />
                     <div className="stats-info">
                         <p className="info">
                             <FaHeart color="#69DC12" size={25} /> HP:{stats[0].base_stat}

@@ -5,6 +5,7 @@ import PikachuLove from "../../src/assets/images/pikachuLove.gif"
 import useFavouritePokemon from "../hooks/useFavouritePokemon";
 import FavouritePokemonList from "./FavouritePokemonList";
 
+
 const FavouritePokemon = (name: any) => {
     const [pokemons, setPokemons] = useState<any>([]);
     const { favouritePokemon, removeFavouritePokemon } = useFavouritePokemon(name);

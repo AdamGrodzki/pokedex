@@ -1,6 +1,14 @@
 import "../styles/button.css"
 
-const Button = ({ onClick, disabled, children, className }: any) => {
+interface ButtonProps {
+    onClick: () => void;
+    disabled?: boolean;
+    children: React.ReactNode;
+    className?: string;
+  }
+  
+
+const Button = ({ onClick, disabled, children, className }: ButtonProps) => {
 
     return (
         <button
@@ -12,5 +20,5 @@ const Button = ({ onClick, disabled, children, className }: any) => {
         </button>
     );
 }
-
+ 
 export default Button;

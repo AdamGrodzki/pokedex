@@ -1,4 +1,8 @@
-const typeGradients: any = {
+interface TypeGradients {
+    [key: string]: string;
+}
+
+const typeGradients: TypeGradients = {
     normal: "linear-gradient(to right, #A8A77A, #C6C6A7)",
     fire: "linear-gradient(to right, #EE8130, #F7D486)",
     water: "linear-gradient(to right, #6390F0, #9DB7F5)",
@@ -19,6 +23,6 @@ const typeGradients: any = {
     fairy: "linear-gradient(to right, #D685AD, #F4BEC9"
 };
 
-export const colorSwitcher = (type: any) => {
+export const colorSwitcher = (type: string): string => {
     return typeGradients[type] || "linear-gradient(to right, #A8A77A, #C6C6A7)";
 };

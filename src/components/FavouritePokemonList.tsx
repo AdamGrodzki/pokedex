@@ -1,6 +1,16 @@
 import { Link } from "react-router-dom";
 
-const FavouritePokemonList = ({ pokemons, handleRemoveFavourite }: any) => {
+interface Pokemon {
+    id: number;
+    name: string;
+  }
+  
+  interface FavouritePokemonListProps {
+    pokemons: Pokemon[];
+    handleRemoveFavourite: (pokemonName: string) => void;
+  }
+
+const FavouritePokemonList: React.FC<FavouritePokemonListProps> = ({ pokemons, handleRemoveFavourite }) => {
     return (
         <div className="fav-poke-container">
             {pokemons?.map((pokemon: any) => (

@@ -7,6 +7,7 @@ import PokemonContainer from "./PokemonContainer";
 
 interface Pokemon {
     name: string;
+    url: string;
   }
 
 const PokemonList: React.FC  = () => {

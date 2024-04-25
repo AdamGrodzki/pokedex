@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "../styles/favouriteStats.css"
 import combatPowerIcon from "../assets/images/combat_power.png"
 import { FaHeart } from "react-icons/fa";
@@ -8,8 +8,16 @@ import { GiSteeltoeBoots } from "react-icons/gi";
 import { GiSpinningSword } from "react-icons/gi";
 import { GiBoltShield } from "react-icons/gi";
 
+interface Pokemon {
+    stats: {
+        base_stat: number;
+        stat: {
+            name: string;
+        };
+    }[];
+}
 
-export const FavouriteStats = ({ favouritePokemons }: any) => {
+export const FavouriteStats = ({ favouritePokemons }: {favouritePokemons: Pokemon[]}) => {
     const [totalAttack, setTotalAttack] = useState(0);
     const [totalDefense, setTotalDefense] = useState(0);
     const [totalSpecialAttack, setTotalSpecialAttack] = useState(0);
@@ -26,9 +34,9 @@ export const FavouriteStats = ({ favouritePokemons }: any) => {
             let hpSum = 0;
             let speedSum = 0;
 
-            favouritePokemons.forEach((pokemon: any) => {
+            favouritePokemons.forEach((pokemon) => {
                 const stats = pokemon.stats;
-                stats.forEach((stat: any) => {
+                stats.forEach((stat) => {
                     switch (stat.stat.name) {
                         case "attack":
                             attackSum += stat.base_stat;

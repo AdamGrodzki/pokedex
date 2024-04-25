@@ -3,10 +3,12 @@ import useFavouritePokemon from "../hooks/useFavouritePokemon";
 import { FaStar, FaRegStar } from "react-icons/fa";
 import "../styles/pokemonContainer.css"
 
+interface Pokemon {
+    name: string;
+    url: string;
+  }
 
-
-
-const PokemonContainer = ({ pokemon }:any) => {
+const PokemonContainer = ({pokemon}: {pokemon: Pokemon}) => {
     const { favouritePokemon } = useFavouritePokemon(pokemon.name);
 
     return (
