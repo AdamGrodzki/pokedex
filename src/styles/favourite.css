@@ -1,3 +1,7 @@
+.favourite-heading {
+    margin: 10px 0;
+}
+
 .back-button {
     background-color: #ffcd02;
     color: #003060;
@@ -37,7 +41,6 @@
 
 .favourite-container img {
     height: 100px;
-    margin: 0 -20px;
 }
 
 .fav-poke-container {
@@ -85,4 +88,19 @@
 .remove-btn:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(255, 77, 77, 0.5);
+}
+
+
+@media (max-width: 768px) {
+    .fav-poke-container {
+        width: 100%;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-gap: 15px;
+    }
+
+    .favourite-heading {
+        font-size: 30px;
+        line-height: 50px;
+    }
 }

@@ -4,6 +4,7 @@
     background-color: #1d1d1d;
     height: 50px;
     display: flex;
+    padding: 10px 0;
     flex-direction: column;
     align-content: center;
     justify-content: center;
@@ -46,4 +47,88 @@
 .nav-link.active {
     background-color: #ffcd02;
     color: #003060;
+}
+
+
+/* hamburger menu  */
+.burger-menu-checkbox {
+    display: none;
+}
+
+.burger-menu-label {
+    display: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.burger-menu-icon,
+.burger-menu-icon::before,
+.burger-menu-icon::after {
+    display: block;
+    background-color: #ffcd02;
+    position: relative;
+    height: 3px;
+    width: 30px;
+    border-radius: 3px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.burger-menu-icon::before,
+.burger-menu-icon::after {
+    content: "";
+    position: absolute;
+}
+
+.burger-menu-icon::before {
+    top: -10px;
+}
+
+.burger-menu-icon::after {
+    top: 10px;
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        height: auto;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .burger-menu-label {
+        display: block;
+    }
+
+    .nav-link-container {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0;
+        width: 100%;
+    }
+
+    .nav-link-container li {
+        width: 100%;
+        margin: 5px 0;
+    }
+
+    .nav-link {
+        font-size: 16px;
+        padding: 10px 5px;
+    }
+
+    .burger-menu-checkbox:checked~.nav-link-container {
+        display: flex;
+    }
+
+    .burger-menu-checkbox:checked~.burger-menu-label .burger-menu-icon {
+        background-color: transparent;
+    }
+
+    .burger-menu-checkbox:checked~.burger-menu-label .burger-menu-icon::before {
+        transform: translateY(10px) rotate(45deg);
+    }
+
+    .burger-menu-checkbox:checked~.burger-menu-label .burger-menu-icon::after {
+        transform: translateY(-10px) rotate(-45deg);
+    }
 }

@@ -100,3 +100,35 @@
         transform: scale(1);
     }
 }
+
+
+/* Responsive  */
+@media (max-width: 768px) {
+    .combat-power img {
+        width: 48px;
+        height: 48px;
+        margin-right: 12px;
+    }
+
+    .favourite-stats h2 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .combat-power {
+        font-size: 15px;
+    }
+
+    .stat-breakdown {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-breakdown p {
+        font-size: 14px;
+    }
+
+    .stat-breakdown svg {
+        width: 24px;
+        height: 24px;
+    }
+}

@@ -27,27 +27,3 @@ body {
     background-size: cover;
     color: black;
 }
-
-@media (max-width: 576px) {
-    body {
-        background-size: auto 100vh;
-    }
-}
-
-@media (min-width: 768px) {
-    body {
-        background-size: auto 100vh;
-    }
-}
-
-@media (min-width: 992px) {
-    body {
-        background-size: cover;
-    }
-}
-
-@media (min-width: 1200px) {
-    body {
-        background-size: cover;
-    }
-}

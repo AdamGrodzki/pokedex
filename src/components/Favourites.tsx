@@ -33,7 +33,7 @@ const FavouritePokemon = (name: any) => {
     return (
         <div>
             <div className="favourite-container">
-                <h1>Favourite <img src={PikachuLove} alt="Pikachu jumps in the hearts" /> Pokemon</h1>
+                <h1 className="favourite-heading">Favourite <img src={PikachuLove} alt="Pikachu jumps in the hearts" /> Pokemon</h1>
             </div>
             <FavouritePokemonList pokemons={pokemons} handleRemoveFavourite={removeFavouritePokemon} />
             <FavouriteStats favouritePokemons={pokemons} />

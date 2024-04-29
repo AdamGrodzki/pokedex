@@ -119,3 +119,49 @@
         transform: scale(1);
     }
 }
+
+/* Responsive  */
+@media (max-width: 768px) {
+    .main {
+        /* width: 100%; */
+        width: fit-content;
+        padding: 20px;
+    }
+
+    .pokemon-card {
+        align-items: center;
+    }
+
+    .capitalize-name {
+        font-size: 15px;
+    }
+
+    .base-stats {
+        font-size: 15px;
+    }
+
+    .pokemon-img {
+        width: 110px;
+    }
+
+    .stats-container {
+        padding: 15px;
+    }
+
+    .stats-info {
+        line-height: 20px;
+        font-size: 14px;
+    }
+
+    .types-icon img {
+        width: 30px;
+        height: 30px;
+        bottom: 50px;
+        right: 120px;
+    }
+
+    .fav-button {
+        left: 145px;
+        top: -15px;
+    }
+}
