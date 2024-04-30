@@ -131,4 +131,9 @@
         width: 24px;
         height: 24px;
     }
+
+    .favourite-stats {
+        grid-template-columns: 1fr;
+        grid-gap: 15px;
+    }
 }

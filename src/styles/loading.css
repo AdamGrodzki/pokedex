@@ -20,3 +20,15 @@
         transform: rotate(360deg);
     }
 }
+
+@media (max-width: 768px) {
+    .loading-page {
+        flex-direction: column;
+    }
+
+    .loading-page img {
+        width: 100%;
+        height: auto;
+        max-width: 180px;
+    }
+}
