@@ -79,3 +79,21 @@ a {
         transform: rotate(360deg);
     }
 }
+
+@media (max-width: 768px) {
+    .poke-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        max-width: 90%;
+    }
+
+    .pokemon-link {
+        height: 150px;
+        width: 150px;
+        font-size: 0.65rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        line-height: 12px;
+    }
+}

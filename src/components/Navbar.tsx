@@ -1,6 +1,6 @@
 import { Link, useLocation } from "react-router-dom";
 import "../styles/navbar.css"
-import { useState } from "react";
+import { useState }  from "react";
 
 export const Navbar = () => {
     const location = useLocation();
@@ -9,6 +9,7 @@ export const Navbar = () => {
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
     };
+
 
     return (
         <nav className="navbar">
