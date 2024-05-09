@@ -1,7 +1,7 @@
 import { Routes, Route } from "react-router-dom";
-import PokemonList from "./components/PokemonList";
-import Favourites from "./components/Favourites";
-import PokemonDetails from "./components/PokemonDetails";
+import PokemonList from "./views/PokemonList";
+import Favourites from "./views/Favourites";
+import PokemonDetails from "./views/PokemonDetails";
 import Navbar from "./components/Navbar";
 
 

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { FavouriteStats } from "./FavouriteStats";
+import { FavouriteStats } from "../components/FavouriteStats";
 import "../styles/favourite.css"
 import PikachuLove from "../../src/assets/images/pikachuLove.gif"
 import useFavouritePokemon from "../hooks/useFavouritePokemon";
-import FavouritePokemonList from "./FavouritePokemonList";
+import FavouritePokemonList from "../components/FavouritePokemonList";
 
 
 const FavouritePokemon = (name: any) => {

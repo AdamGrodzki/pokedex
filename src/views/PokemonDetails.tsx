@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import Loading from "./Loading";
-import PokemonCard from "./PokemonCard";
+import Loading from "../components/Loading";
+import PokemonCard from "../components/PokemonCard";
 import "../styles/pokemonDetails.css";
 
 

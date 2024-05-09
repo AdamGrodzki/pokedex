@@ -9,13 +9,13 @@ interface Pokemon {
   }
 
 const PokemonContainer = ({pokemon}: {pokemon: Pokemon}) => {
-    const { favouritePokemon } = useFavouritePokemon(pokemon.name);
+    const { isFavouritePokemon } = useFavouritePokemon(pokemon.name);
 
     return (
         < div className="pokemon" key={pokemon.name} >
             <Link to={`/pokemon/${pokemon.name}`} className="pokemon-link">
                 {pokemon.name}
-                {favouritePokemon.includes(pokemon.name) ? (
+                {isFavouritePokemon ? (
                     <FaStar size={15} className="favourite-icon" />
                 ) : (
                     <FaRegStar size={15} className="favourite-icon" />

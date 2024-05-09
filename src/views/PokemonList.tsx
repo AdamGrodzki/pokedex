@@ -1,9 +1,9 @@
 import { useSearchParams } from "react-router-dom";
 import "../styles/pokemonList.css";
-import Button from "./Button";
+import Button from "../components/Button";
 import React, { useState, useEffect } from "react";
 import { MdOutlineCatchingPokemon } from "react-icons/md";
-import PokemonContainer from "./PokemonContainer";
+import PokemonContainer from "../components/PokemonContainer";
 
 interface Pokemon {
     name: string;

@@ -1,5 +1,5 @@
-import { colorSwitcher } from './PokemonSwitchColors';
-import typeIcons from './TypeIcons';
+import { colorSwitcher } from '../const/PokemonSwitchColors';
+import typeIcons from '../assets/TypeIcons';
 import '../styles/pokemonCard.css';
 import defaultPokemonImage from '../../src/assets/images/pokeball.gif';
 import { FaHeart } from 'react-icons/fa';
@@ -49,7 +49,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ details }) => {
                 <h2 className="capitalize-name">{name}</h2>
                 <div className="base-stats">
                     <span>ID: </span>
-                    #{id.toString().padStart(3, '0')}
+                    #{String(id).padStart(3, '0')}
                 </div>
             </div>
 
@@ -60,7 +60,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({ details }) => {
                         {isFavouritePokemon ? <GoStarFill size={30} color="gold" /> : <GoStarFill size={30} />}
                     </Button>
                     <p className="types-icon">
-                        {types.map((type: any) => (
+                        {types.map((type) => (
                             <span key={type.type.name}>{getTypeIcon(type.type.name)}</span>
                         ))}
                     </p>
