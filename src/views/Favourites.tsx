@@ -6,26 +6,29 @@ import useFavouritePokemon from "../hooks/useFavouritePokemon";
 import FavouritePokemonList from "../components/FavouritePokemonList";
 
 
-const FavouritePokemon = (name: any) => {
+
+const fetchData = async (favouritePokemon: string[], setPokemons: any) => {
+    try {
+        const data = await Promise.all(
+            favouritePokemon.map(async (item: string) => {
+                const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${item}/`);
+                return await response.json();
+            })
+        );
+
+        setPokemons(data);
+    } catch (error) {
+        console.log("Error fetching Pokemon data: ", error)
+    }
+};
+
+
+const FavouritePokemon = (name: string) => {
     const [pokemons, setPokemons] = useState<any>([]);
     const { favouritePokemon, removeFavouritePokemon } = useFavouritePokemon(name);
+   
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const data = await Promise.all(
-                    favouritePokemon.map(async (item) => {
-                        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${item}/`);
-                        return await response.json();
-                    })
-                );
-
-                setPokemons(data);
-            } catch (error) {
-                console.log("Error fetching Pokemon data: ", error)
-            }
-        };
-
-        fetchData();
+        fetchData(favouritePokemon, setPokemons);
     }, [favouritePokemon]);
 
 

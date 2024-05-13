@@ -13,7 +13,7 @@ interface Pokemon {
 const FavouritePokemonList: React.FC<FavouritePokemonListProps> = ({ pokemons, handleRemoveFavourite }) => {
     return (
         <div className="fav-poke-container">
-            {pokemons?.map((pokemon: any) => (
+            {pokemons?.map((pokemon) => (
                 <div key={pokemon.id} className="pokemon">
                     <Link to={`/pokemon/${pokemon.id}`} className="pokemon-link">
                         {pokemon.name}

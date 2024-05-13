@@ -17,32 +17,36 @@ const PokemonList: React.FC  = () => {
     const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
-        async function fetchData() {
-            let url = "https://pokeapi.co/api/v2/pokemon";
-            if (searchParams.get("page")) {
+        const fetchData = async () => {
+            try {
+                let url = "https://pokeapi.co/api/v2/pokemon";
+
                 const currentPage = searchParams.get("page") || "1";
                 if (Number(currentPage) > 1) {
                     url = `https://pokeapi.co/api/v2/pokemon?offset=${(Number(currentPage) - 1) * 20}`;
-                }
             }
+                
             const response = await fetch(url);
             const data = await response.json();
             setPreviousUrl(data.previous)
             setNextUrl(data.next)
             setPokemons(data.results)
+        } catch(error){
+            console.log("Error fetching Pokemon data: ", error);
         }
+    };
 
 
         fetchData();
     }, [searchParams]);
 
     const handleNextPage = () => {
-        const currentPage = (searchParams.get("page") || 1) || "1";
+        const currentPage = searchParams.get("page") || "1";
         setSearchParams({ page: (Number(currentPage) + 1).toString()})
     };
 
     const handlePrevPage = () => {
-        const currentPage = (searchParams.get("page") || 1) || "1";
+        const currentPage = searchParams.get("page") || "1";
         if (Number(currentPage) > 1) {
             setSearchParams({ page: (Number(currentPage) - 1).toString() });
         }

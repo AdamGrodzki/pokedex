@@ -4,7 +4,6 @@ import Loading from "../components/Loading";
 import PokemonCard from "../components/PokemonCard";
 import "../styles/pokemonDetails.css";
 
-
 interface Pokemon {
     name: string;
     id: number;
@@ -17,28 +16,33 @@ interface Pokemon {
 
 const PokemonDetails = () => {
     const { name } = useParams<{ name: string }>();
-    const [details, setDetails] = useState<Pokemon>();
+    const [details, setDetails] = useState<Pokemon | null>(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        async function fetchDetails() {
-            try {
-                const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
-                const data = await response.json();
-                setDetails(data);
-            } catch {
-                console.log("error");
-            }
+    const fetchDetails = async () => {
+        try {
+            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`);
+            const data = await response.json();
+            setDetails(data);
+        } catch (error) {
+            console.log("Error fetching Pokemon details: ", error);
         }
+    };
+
+    useEffect(() => {
         fetchDetails();
     }, [name]);
 
+    const navigateBack = () => {
+        navigate(-1);
+    };
+
     return (
         <div>
-            <Link to="" className="back-btn" onClick={() => navigate(-1)}>Back</Link>
+            <Link to="" className="back-btn" onClick={navigateBack}>Back</Link>
             <h1 className="heading-details">Pokemon Details</h1>
 
-            {!details ? <Loading /> : <PokemonCard details={details} />}
+            {details ? <PokemonCard details={details} /> : <Loading />}
         </div>
     );
 };
