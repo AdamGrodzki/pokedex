@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
-import Loading from "../components/Loading";
-import PokemonCard from "../components/PokemonCard";
-import "../styles/pokemonDetails.css";
+import Loading from "../../components/Loading/Loading";
+import PokemonCard from "../../components/PokemonCard/PokemonCard";
+import "../PokemonDetails/pokemonDetails.css";
 
 interface Pokemon {
     name: string;

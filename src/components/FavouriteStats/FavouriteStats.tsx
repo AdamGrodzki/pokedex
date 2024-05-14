@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import "../styles/favouriteStats.css"
-import combatPowerIcon from "../assets/images/combat_power.png"
+import "../FavouriteStats/favouriteStats.css"
+import combatPowerIcon from "../../assets/images/combat_power.png";
 import { FaHeart } from "react-icons/fa";
 import { RiSwordFill } from "react-icons/ri";
 import { FaShield } from "react-icons/fa6";

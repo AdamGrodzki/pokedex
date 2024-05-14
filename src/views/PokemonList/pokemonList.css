@@ -35,7 +35,7 @@
     height: 180px;
     width: 180px;
     text-transform: capitalize;
-    background-image: url("../assets/images/poke_background_icon.png");
+    background-image: url("../../assets/images/poke_background_icon.png");
     background-size: cover;
     background-repeat: no-repeat;
     transform: scale(1);

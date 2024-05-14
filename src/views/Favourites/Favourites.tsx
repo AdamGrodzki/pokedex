@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { FavouriteStats } from "../components/FavouriteStats";
-import "../styles/favourite.css"
-import PikachuLove from "../../src/assets/images/pikachuLove.gif"
-import useFavouritePokemon from "../hooks/useFavouritePokemon";
-import FavouritePokemonList from "../components/FavouritePokemonList";
-
+import { FavouriteStats } from "../../components/FavouriteStats/FavouriteStats";
+import "../Favourites/favourites.css";
+import PikachuLove from "../../assets/images/pikachuLove.gif";
+import useFavouritePokemon from "../../hooks/useFavouritePokemon";
+import FavouritePokemonList from "../../components/FavouritePokemonList";
 
 
 const fetchData = async (favouritePokemon: string[], setPokemons: any) => {
@@ -23,7 +22,7 @@ const fetchData = async (favouritePokemon: string[], setPokemons: any) => {
 };
 
 
-const FavouritePokemon = (name: string) => {
+const FavouritePokemon = (name: any) => {
     const [pokemons, setPokemons] = useState<any>([]);
     const { favouritePokemon, removeFavouritePokemon } = useFavouritePokemon(name);
    

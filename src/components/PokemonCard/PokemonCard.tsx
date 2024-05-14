@@ -1,7 +1,7 @@
-import { colorSwitcher } from '../const/PokemonSwitchColors';
-import typeIcons from '../assets/TypeIcons';
-import '../styles/pokemonCard.css';
-import defaultPokemonImage from '../../src/assets/images/pokeball.gif';
+import { colorSwitcher } from '../../const/PokemonSwitchColors';
+import typeIcons from '../../assets/TypeIcons';
+import '../PokemonCard/pokemonCard.css';
+import defaultPokemonImage from '../../assets/images/pokeball.gif';
 import { FaHeart } from 'react-icons/fa';
 import { RiSwordFill } from 'react-icons/ri';
 import { FaShield } from 'react-icons/fa6';
@@ -9,8 +9,8 @@ import { GiSteeltoeBoots } from 'react-icons/gi';
 import { GiSpinningSword } from 'react-icons/gi';
 import { GiBoltShield } from 'react-icons/gi';
 import { GoStarFill } from "react-icons/go";
-import Button from './Button';
-import useFavouritePokemon from "../hooks/useFavouritePokemon";
+import Button from '../Button/Button';
+import useFavouritePokemon from "../../hooks/useFavouritePokemon";
 
 
 interface PokemonDetails {

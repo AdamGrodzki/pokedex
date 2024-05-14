@@ -1,5 +1,6 @@
-import "../styles/loading.css"
-import Starmie from "../../src/assets/images/starmiePixel.png"
+import "../Loading/loading.css"
+import Starmie from "../../assets/images/starmiePixel.png";
+
 
 const Loading = () => {
     return (
