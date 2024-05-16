@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-const FAVOURITE_POKEMON_KEY = 'favouritePokemon';
+import { getPokemonsFromLocalStorage } from '../helpers';
+export const FAVOURITE_POKEMON_KEY = 'favouritePokemon';
 export const FAVOURITE_MAX_COUNT = 6;
 
 
@@ -10,17 +11,22 @@ const useFavouritePokemon = (pokemonName: string) => {
     }, [])
 
     useEffect(() => {
+        console.log({ favouritePokemon })
         updateFavouritePokemonLS(favouritePokemon)
+        // deb
     }, [favouritePokemon])
 
     const isFavouritePokemon = favouritePokemon.includes(pokemonName);
     const isMaxFavouriteCount = favouritePokemon.length === FAVOURITE_MAX_COUNT;
 
-
-
-    const storedPokemon = localStorage.getItem(FAVOURITE_POKEMON_KEY);
     const getFromLocalStorage = () => {
-        setFavouritePokemon(storedPokemon ? JSON.parse(storedPokemon) : []);
+        const storedPokemons = getPokemonsFromLocalStorage();
+        if (favouritePokemon.join(',') !== storedPokemons.join(',')) {
+            console.log(favouritePokemon.join(','))
+            console.log(storedPokemons.join(','))
+            setFavouritePokemon(storedPokemons);
+        }
+
     }
 
     const addFavouritePokemon = () => {
@@ -48,7 +54,6 @@ const useFavouritePokemon = (pokemonName: string) => {
         removeFavouritePokemon,
         isFavouritePokemon,
         isMaxFavouriteCount,
-        storedPokemon,
     };
 };
 

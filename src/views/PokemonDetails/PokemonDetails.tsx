@@ -16,7 +16,7 @@ interface Pokemon {
 
 const PokemonDetails = () => {
     const { name } = useParams<{ name: string }>();
-    const [details, setDetails] = useState<Pokemon | null>(null);
+    const [details, setDetails] = useState<Pokemon>();
     const navigate = useNavigate();
 
     const fetchDetails = async () => {
