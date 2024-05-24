@@ -31,7 +31,7 @@ const PokemonDetails = () => {
 
     useEffect(() => {
         fetchDetails();
-    }, [name]);
+    }, []);
 
     const navigateBack = () => {
         navigate(-1);

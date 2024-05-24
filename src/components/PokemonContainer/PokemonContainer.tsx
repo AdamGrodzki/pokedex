@@ -9,8 +9,7 @@ interface Pokemon {
   }
 
 const PokemonContainer = ({pokemon}: {pokemon: Pokemon}) => {
-    const { isFavouritePokemon, favouritePokemon} = useFavouritePokemon(pokemon.name);
-    console.log({isFavouritePokemon, favouritePokemon})
+    const { isFavouritePokemon } = useFavouritePokemon(pokemon.name);
 
     return (
         < div className="pokemon" key={pokemon.name} >

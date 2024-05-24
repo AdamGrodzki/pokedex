@@ -1,55 +1,48 @@
 import { useEffect, useState } from 'react';
-import { getPokemonsFromLocalStorage } from '../helpers';
+import { getPokemonsFromLocalStorage, updateFavouritePokemonLS } from '../helpers';
+
 export const FAVOURITE_POKEMON_KEY = 'favouritePokemon';
 export const FAVOURITE_MAX_COUNT = 6;
 
 
 const useFavouritePokemon = (pokemonName: string) => {
-    const [favouritePokemon, setFavouritePokemon] = useState<string[]>([]);
+    const [favouritePokemons, setFavouritePokemons] = useState<string[]>(() => getPokemonsFromLocalStorage());
+
     useEffect(() => {
-        getFromLocalStorage()
+        setFavouritePokemons(getPokemonsFromLocalStorage())
     }, [])
 
     useEffect(() => {
-        console.log({ favouritePokemon })
-        updateFavouritePokemonLS(favouritePokemon)
-        // deb
-    }, [favouritePokemon])
+        updateFavouritePokemonLS(favouritePokemons)
+    }, [favouritePokemons])
 
-    const isFavouritePokemon = favouritePokemon.includes(pokemonName);
-    const isMaxFavouriteCount = favouritePokemon.length === FAVOURITE_MAX_COUNT;
+    const isFavouritePokemon = favouritePokemons.includes(pokemonName);
+    const isMaxFavouriteCount = favouritePokemons.length === FAVOURITE_MAX_COUNT;
 
-    const getFromLocalStorage = () => {
-        const storedPokemons = getPokemonsFromLocalStorage();
-        if (favouritePokemon.join(',') !== storedPokemons.join(',')) {
-            console.log(favouritePokemon.join(','))
-            console.log(storedPokemons.join(','))
-            setFavouritePokemon(storedPokemons);
-        }
-
-    }
+    // const getFromLocalStorage = () => {
+    //     const storedPokemons = getPokemonsFromLocalStorage();
+    //     if (favouritePokemons.join(',') !== storedPokemons.join(',')) {
+    //         setFavouritePokemons(storedPokemons);
+    //         console.log("getFromLocalStorage: ", storedPokemons);
+    //     }
+    // };
 
     const addFavouritePokemon = () => {
         if (!isFavouritePokemon && !isMaxFavouriteCount) {
-            const updatedPokemon = [...favouritePokemon, pokemonName];
-            setFavouritePokemon(updatedPokemon);
+            const updatedPokemon = [...favouritePokemons, pokemonName];
+            setFavouritePokemons(updatedPokemon);
         }
     };
 
     const removeFavouritePokemon = (pokemonName: string) => {
-        const updatedPokemon = favouritePokemon.filter((name) => name !== pokemonName);
-        setFavouritePokemon(updatedPokemon);
-        updateFavouritePokemonLS(updatedPokemon);
-
-    };
-
-    const updateFavouritePokemonLS = (newFavouritePokemon: string[]) => {
-        localStorage.setItem(FAVOURITE_POKEMON_KEY, JSON.stringify(newFavouritePokemon));
+        const updatedPokemon = favouritePokemons.filter((name) => name !== pokemonName);
+        setFavouritePokemons(updatedPokemon);
+        // updateFavouritePokemonLS(updatedPokemon);
     };
 
 
     return {
-        favouritePokemon,
+        favouritePokemons,
         addFavouritePokemon,
         removeFavouritePokemon,
         isFavouritePokemon,
@@ -58,5 +51,3 @@ const useFavouritePokemon = (pokemonName: string) => {
 };
 
 export default useFavouritePokemon;
-
-
